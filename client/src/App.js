@@ -1,14 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AddUsers from './pages/addUsers';
+import HomePage from './pages/homePage';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AddUsers/>} />
-          {/* Add more Route components for other pages if needed */}
+          <Route path="/register" element={<AddUsers/>} />
+          <Route path="/" element={<HomePage/>}/>
         </Routes>
       </BrowserRouter>
     </div>

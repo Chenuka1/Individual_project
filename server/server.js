@@ -1,21 +1,15 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+require('dotenv').config(); // Load environment variables
 
-require('dotenv').config
+const app = express();
+const PORT = process.env.PORT || 3001;
 
-const express=require('express');
+// Connect to MongoDB
+mongoose.connect(process.env.DB_CONNECTION_STRING, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-const mongoose=require('mongoose');
-
-
-//express app
-const app= express();
-
-
-
-
-
-
-
-
-
-
-
+// ... (rest of the code remains the same)

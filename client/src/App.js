@@ -9,6 +9,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/register" element={<AddUsers/>} />
+          
           <Route path="/" element={<HomePage/>}/>
         </Routes>
       </BrowserRouter>

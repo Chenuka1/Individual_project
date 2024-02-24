@@ -1,15 +1,32 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-require('dotenv').config(); // Load environment variables
+const cors = require('cors');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
 
-// Connect to MongoDB
-mongoose.connect(process.env.DB_CONNECTION_STRING, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+app.use((req, res, next) => {
+  console.log(req.path, req.method);
+  next();
 });
 
-// ... (rest of the code remains the same)
+// Connect to the database
+mongoose.connect(process.env.MONG_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to the database');
+    app.listen(process.env.PORT, () => {
+      console.log("Listening on port ", process.env.PORT);
+    });
+  })
+  .catch((error) => {
+    console.error('Error connecting to the database:', error);
+    process.exit(1); // Exit the process if there's a database connection error
+  });
+
+// Routes
+app.use('/api/users', userRoutes);

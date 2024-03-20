@@ -1,9 +1,9 @@
 // addUsers.jsx
 import React, { useState } from "react";
-import '../styles/addUsers.css';
+import '../styles/addPatients.css'
 
-function AddUsers() {
 
+function Addpatients() {
   const [formData, setFormData] = useState({
     birthCertificateId: "",
     firstName: "",
@@ -15,31 +15,88 @@ function AddUsers() {
     registeredHospital: ""
   });
 
+  const [formErrors, setFormErrors] = useState({});
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: value
     }));
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
+    const errors = {};
+
+    // Validate birthCertificateId
+    if (!formData.birthCertificateId.trim()) {
+      errors.birthCertificateId = "Birth certificate ID is required";
+    }
+
+    if (!formData.firstName.trim()) {
+      errors.firstName = "Firstname is required";
+    }
+
+    // Validate lastName
+    if (!formData.lastName.trim()) {
+      errors.lastName = "Last name is required";
+    }
+
+    // Validate birthdate
+    if (!formData.birthdate) {
+      errors.birthdate = "Birthdate is required";
+    }
+    // Validate gender
+    if (!formData.gender) {
+      errors.gender = "Gender is required";
+    }
+
+    // Validate parentsName
+    if (!formData.parentsName.trim()) {
+      errors.parentsName = "Parents or guardians name is required";
+    }
+
+    if (!formData.contactNumber || formData.contactNumber.length < 10) {
+      errors.contactNumber =
+        "Contact number should have at least 10 digits";
+    }
+
+    // Validate contactNumber
+    if (!formData.contactNumber) {
+      errors.contactNumber = "Contact number is required";
+    }
+
+    // Validate registeredHospital
+    if (!formData.registeredHospital) {
+      errors.registeredHospital = "Registered hospital is required";
+    }
+
+    // Update the state with the errors
+    setFormErrors(errors);
+
+    // Check if there are any errors
+    if (Object.keys(errors).length > 0) {
+      return;
+    }
+
     // Assuming you have a function to post data to your server
     try {
-      const response = await fetch('http://localhost:4000/api/users/create', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "http://localhost:4000/api/users/create",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formData)
+        }
+      );
 
       if (response.ok) {
-        console.log('User created successfully');
-        alert("user created sucessfully");
+        console.log("User created successfully");
+        alert("User created successfully");
         // You can reset the form or perform other actions after successful submission
         setFormData({
           birthCertificateId: "",
@@ -52,16 +109,27 @@ function AddUsers() {
           registeredHospital: ""
         });
       } else {
-        console.error('Failed to create user');
+        console.error("Failed to create user");
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
+      alert(error);
     }
   };
-  
+
   return (
     <div className="form">
-      <h1>Add new users</h1>
+      <h1>Add new patients</h1>
+      {/* Display errors */}
+      {Object.keys(formErrors).length > 0 && (
+        <div className="error-container">
+          {Object.values(formErrors).map((error, index) => (
+            <div key={index} className="error">
+              {error}
+            </div>
+          ))}
+        </div>
+      )}
       <form onSubmit={handleSubmit}>
         <label htmlFor="birthCertificateId">Enter birth certificate ID</label>
         <input
@@ -70,7 +138,8 @@ function AddUsers() {
           name="birthCertificateId"
           value={formData.birthCertificateId}
           onChange={handleChange}
-        /><br></br>
+        />
+        <br />
         <label htmlFor="firstName">Enter the first name</label>
         <input
           type="text"
@@ -78,7 +147,8 @@ function AddUsers() {
           name="firstName"
           value={formData.firstName}
           onChange={handleChange}
-        /><br></br>
+        />
+        <br />
         <label htmlFor="lastName">Enter the last name</label>
         <input
           type="text"
@@ -86,7 +156,8 @@ function AddUsers() {
           name="lastName"
           value={formData.lastName}
           onChange={handleChange}
-        /><br></br>
+        />
+        <br />
         <label htmlFor="birthdate">Enter the birthdate</label>
         <input
           type="date"
@@ -94,7 +165,8 @@ function AddUsers() {
           name="birthdate"
           value={formData.birthdate}
           onChange={handleChange}
-        /><br></br>
+        />
+        <br />
         <label htmlFor="gender">Enter gender</label>
         <label>
           <input
@@ -102,7 +174,7 @@ function AddUsers() {
             id="male"
             name="gender"
             value="male"
-            checked={formData.gender === 'male'}
+            checked={formData.gender === "male"}
             onChange={handleChange}
           />
           Male
@@ -113,12 +185,12 @@ function AddUsers() {
             id="female"
             name="gender"
             value="female"
-            checked={formData.gender === 'female'}
+            checked={formData.gender === "female"}
             onChange={handleChange}
           />
           Female
         </label>
-        <br></br>
+        <br />
         <label htmlFor="parentsName">Enter parents or guardians name</label>
         <input
           type="text"
@@ -126,15 +198,19 @@ function AddUsers() {
           name="parentsName"
           value={formData.parentsName}
           onChange={handleChange}
-        /><br></br>
-        <label htmlFor="contactNumber">Enter parents/Guardian phone number</label>
+        />
+        <br />
+        <label htmlFor="contactNumber">
+          Enter parents/Guardian phone number
+        </label>
         <input
           type="number"
           placeholder="Contact number"
           name="contactNumber"
           value={formData.contactNumber}
           onChange={handleChange}
-        /><br></br>
+        />
+        <br />
         <label htmlFor="registeredHospital">Select registered hospital</label>
         <select
           name="registeredHospital"
@@ -143,13 +219,14 @@ function AddUsers() {
         >
           <option>Banadaragama hospital</option>
           <option>Asiri hospital</option>
-        </select><br></br>
+        </select>
+        <br />
 
-        <input type="submit" value="Submit"  />
+        <input type="submit" value="Submit" />
         <input type="reset" value="Cancel" />
       </form>
     </div>
   );
 }
 
-export default AddUsers;
+export default Addpatients;

@@ -84,7 +84,7 @@ function Addpatients() {
     // Assuming you have a function to post data to your server
     try {
       const response = await fetch(
-        "http://localhost:4000/api/users/create",
+        "http://localhost:4000/api/patients/create",
         {
           method: "POST",
           headers: {
@@ -120,16 +120,7 @@ function Addpatients() {
   return (
     <div className="form">
       <h1>Add new patients</h1>
-      {/* Display errors */}
-      {Object.keys(formErrors).length > 0 && (
-        <div className="error-container">
-          {Object.values(formErrors).map((error, index) => (
-            <div key={index} className="error">
-              {error}
-            </div>
-          ))}
-        </div>
-      )}
+      
       <form onSubmit={handleSubmit}>
         <label htmlFor="birthCertificateId">Enter birth certificate ID</label>
         <input
@@ -224,6 +215,16 @@ function Addpatients() {
 
         <input type="submit" value="Submit" />
         <input type="reset" value="Cancel" />
+        {/* Display errors */}
+      {Object.keys(formErrors).length > 0 && (
+        <div className="error-container">
+          {Object.values(formErrors).map((error, index) => (
+            <div key={index} className="error">
+              {error}
+            </div>
+          ))}
+        </div>
+      )}
       </form>
     </div>
   );

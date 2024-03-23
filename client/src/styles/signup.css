@@ -16,7 +16,7 @@ form {
   margin-top: 0;
 }
  
-.container h1 {
+.container h2{
   text-align: center; /* Center the heading */
   margin-bottom: 30px; /* Add space below the heading */
   color: #333; /* Adjust heading color */
@@ -31,6 +31,7 @@ label {
 
 input[type="text"],
 input[type="email"],
+input[type="number"],
 input[type="password"] {
   width: calc(100% - 16px); /* Adjust width to consider padding */
   padding: 10px;

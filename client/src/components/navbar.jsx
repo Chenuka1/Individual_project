@@ -6,18 +6,28 @@ const Navbar = () =>{
 
 
     return(
-       <nav>
+       <div>
+        <nav>
 
-        <ul>
+            <ul>
 
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/register">patient register</Link></li>
-            <li><Link to="/users">patients</Link></li>
-            <li><Link to="/signup">Add midwives</Link></li>
-            
+          <li><Link to="/home">Home</Link></li>
+          <li><Link to="/register">Add patients</Link></li>
+          <li><Link to="/users">patients</Link></li>
+          <li><Link to="/">Login</Link></li>
+    
 
-        </ul>
-       </nav>
+             </ul>
+        </nav>
+        
+
+
+
+
+
+
+
+       </div>
     )
 }
 

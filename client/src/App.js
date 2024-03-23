@@ -4,7 +4,8 @@ import Addpatients from './pages/addPatients';
 import HomePage from './pages/homePage';
 import Users from './pages/users';
 import Navbar from './components/navbar';
-import Signup from './pages/midwifeSignup';
+import Signup from './pages/Signup';
+import Signin from './pages/Signin';
 
 
 
@@ -17,9 +18,10 @@ function App() {
       
         <Routes>
           <Route path="/register" element={<Addpatients/>} /> 
-          <Route path="/" element={<HomePage/>}/>
+          <Route path="/home" element={<HomePage/>}/>
           <Route path="/users" element={<Users/>}/>
           <Route path="/signup" element={<Signup/>}/>
+          <Route path="/" element={<Signin/>}/>
          
 
 

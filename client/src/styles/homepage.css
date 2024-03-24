@@ -1,14 +1,9 @@
-
-.image-container {
-  display: flex;
-  justify-content: center; /* Center images horizontally */
-  width: 100%;
+.slider-image {
+  width: 100%; /* Adjust as needed */
+  height: auto; /* This will maintain the aspect ratio */
+  max-height: 500px; /* Adjust as needed */
+  object-fit: cover; /* This will cover the whole space while maintaining aspect ratio */
 }
 
-.image {
-  flex: 0 0 auto; /* Allow images to maintain their original size */
-  margin: 0; /* Remove default margins */
-  padding: 0; /* Remove default padding */
-  width: 700px; /* Ensure images don't exceed container width */
-  height:350px;
-}
+
+

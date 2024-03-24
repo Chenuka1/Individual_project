@@ -1,0 +1,39 @@
+.navbar-container {
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+.navbar {
+  background-color:white;
+  padding: 10px;
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Horizontally align items to the center */
+}
+
+ul {
+  list-style-type: none;
+  margin: 0; /* Remove default margin */
+  padding: 0;
+  display: flex;
+  align-items: center; /* Vertically align items */
+}
+
+li {
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: blue;
+}
+
+.logo {
+  width: 150px; /* Adjust size as needed */
+  height: 80px; /* Adjust size as needed */
+}

@@ -6,4 +6,40 @@
 }
 
 
+.welcome{
+
+text-align: center;
+
+}
+
+.imageinfo img{
+  
+  height:400px;
+  width:450px;
+  
+
+
+}
+.imageinfo {
+  display: flex;
+  padding-left:30px;
+
+}
+
+.image-container {
+  position: relative;
+  margin-right: 10px; /* Adjust spacing between images */
+}
+
+.info-button {
+  position: absolute;
+  bottom: 0;
+  width: 100%; /* Make the button width same as the image width */
+}
+
+.button-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 

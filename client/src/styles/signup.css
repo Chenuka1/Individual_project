@@ -12,7 +12,7 @@
 }
 
 /* Styles for form elements */
-form {
+.container form {
   margin-top: 0;
 }
  
@@ -23,16 +23,16 @@ form {
 }
 
 
-label {
+.container label {
   display: block;
   margin-bottom: 8px; /* Decrease margin between labels */
   font-weight: bold; /* Make labels bold */
 }
 
-input[type="text"],
-input[type="email"],
-input[type="number"],
-input[type="password"] {
+.container input[type="text"],
+.container input[type="email"],
+.container input[type="number"],
+.container input[type="password"] {
   width: calc(100% - 16px); /* Adjust width to consider padding */
   padding: 10px;
   margin-bottom: 20px; /* Increase margin between inputs */

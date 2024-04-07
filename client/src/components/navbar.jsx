@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../styles/navbar.css";
 import image from '../assets/logo.jpg';
 
+
 const Navbar = () => {
   return (
     <div className="navbar-container">
@@ -20,8 +21,12 @@ const Navbar = () => {
           <li>
             <Link to="/">Login</Link>
           </li>
+          
           <li>
-            <Link to="/medicalhistory">Medical details</Link>
+            <Link to="/logout">Logout</Link>
+          </li>
+          <li>
+            <Link to="/details">patient details</Link>
           </li>
         </ul>
       </nav>

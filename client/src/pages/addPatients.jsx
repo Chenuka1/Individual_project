@@ -1,4 +1,4 @@
-// addUsers.jsx
+// addPatients.jsx
 import React, { useState } from "react";
 import '../styles/addPatients.css'
 
@@ -6,8 +6,7 @@ import '../styles/addPatients.css'
 function Addpatients() {
   const [formData, setFormData] = useState({
     birthCertificateId: "",
-    firstName: "",
-    lastName: "",
+    fullName: "",
     birthdate: "",
     gender: "",
     parentsName: "",
@@ -35,14 +34,11 @@ function Addpatients() {
       errors.birthCertificateId = "Birth certificate ID is required";
     }
 
-    if (!formData.firstName.trim()) {
-      errors.firstName = "Firstname is required";
+    if (!formData.fullName.trim()) {
+      errors.firstName = "Fullname is required";
     }
 
-    // Validate lastName
-    if (!formData.lastName.trim()) {
-      errors.lastName = "Last name is required";
-    }
+    
 
     // Validate birthdate
     if (!formData.birthdate) {
@@ -100,8 +96,7 @@ function Addpatients() {
         // You can reset the form or perform other actions after successful submission
         setFormData({
           birthCertificateId: "",
-          firstName: "",
-          lastName: "",
+          fullName: "",
           birthdate: "",
           gender: "",
           parentsName: "",
@@ -131,23 +126,15 @@ function Addpatients() {
           onChange={handleChange}
         />
         <br />
-        <label htmlFor="firstName">Enter the first name</label>
+        <label htmlFor="fullName">Enter the full name</label>
         <input
           type="text"
-          placeholder="Enter first name"
-          name="firstName"
-          value={formData.firstName}
+          placeholder="Enter full name"
+          name="fullName"
+          value={formData.fullName}
           onChange={handleChange}
         />
         <br />
-        <label htmlFor="lastName">Enter the last name</label>
-        <input
-          type="text"
-          placeholder="Enter last name"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-        />
         <br />
         <label htmlFor="birthdate">Enter the birthdate</label>
         <input

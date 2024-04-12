@@ -1,4 +1,3 @@
-// Addetails.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -23,6 +22,7 @@ export default function Addetails() {
                 throw new Error('Failed to fetch medical history');
             }
             const data = await response.json();
+            // Update medicalHistory state with fetched data
             setMedicalHistory(data);
         } catch (error) {
             console.error('Error fetching medical history:', error);

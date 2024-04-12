@@ -72,8 +72,16 @@ export default function PatientDetails() {
                                 <td>{patientDetails.registeredHospital}</td>
                             </tr>
                             <tr>
-                                <td>Registered Hospital:</td>
-                                <td>{patientDetails.registeredHospital}</td>
+                                <td>Past diseases</td>
+                                <td>{patientDetails.pastDiseases}</td>
+                            </tr>
+                            <tr>
+                                <td>Allergies</td>
+                                <td>{patientDetails.allergies}</td>
+                            </tr>
+                            <tr>
+                                <td>Medications</td>
+                                <td>{patientDetails.medications}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -44,6 +44,48 @@ router.post('/create', async (req, res) => {
   }
 });
 
+//route to fetch patient medical histroy
+
+router.get('',async(req,res)=>{
+
+  const {birthId}= req.params;
+  
+
+
+
+
+
+})
+// Function to fetch medical history by birth certificate ID
+const getMedicalHistory = async (birthCertificateId) => {
+  try {
+    // Find the patient by birth certificate ID and select only the medical history fields
+    const patient = await Patient.findOne(
+      { birthCertificateId: birthCertificateId },
+      { pastDiseases: 1, allergies: 1, appointmentDate: 1, medications: 1 }
+    );
+    return patient;
+  } catch (error) {
+    console.error('Error fetching medical history:', error);
+    throw error;
+  }
+};
+
+// GET route to fetch a patient's medical history by birth certificate ID
+router.get('/:birthCertificateId/medical-history', async (req, res) => {
+  const { birthCertificateId } = req.params;
+  try {
+    const medicalHistory = await getMedicalHistory(birthCertificateId);
+    if (!medicalHistory) {
+      return res.status(404).json({ error: 'Medical history not found' });
+    }
+    res.json(medicalHistory);
+  } catch (error) {
+    console.error('Error fetching medical history:', error);
+    res.status(500).json({ error: 'Failed to fetch medical history' });
+  }
+});
+
 
 
 module.exports = router;

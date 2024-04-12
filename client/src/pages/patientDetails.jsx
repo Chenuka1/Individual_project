@@ -1,8 +1,8 @@
 
 //patientDetails.jsx
 import React, { useState } from 'react';
-
 import { Link } from 'react-router-dom';
+import '../styles/patientDetails.css'
 
 export default function PatientDetails() {
     const [searchQuery, setSearchQuery] = useState('');
@@ -66,6 +66,10 @@ export default function PatientDetails() {
                             <tr>
                                 <td>Contact Number:</td>
                                 <td>{patientDetails.contactNumber}</td>
+                            </tr>
+                            <tr>
+                                <td>Registered Hospital:</td>
+                                <td>{patientDetails.registeredHospital}</td>
                             </tr>
                             <tr>
                                 <td>Registered Hospital:</td>

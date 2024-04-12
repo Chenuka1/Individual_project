@@ -3,13 +3,11 @@ import { useNavigate } from "react-router-dom";
 import '../styles/signin.css';
 
 function Signin() {
-
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: "",
         password: ""
     });
-   
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -29,8 +27,9 @@ function Signin() {
             });
 
             if (response.ok) {
-                navigate("/home")
-                
+                const { token } = await response.json();
+                localStorage.setItem('token', token); // Store token in local storage
+                navigate("/home");
             } else {
                 const errorMessage = await response.text();
                 throw new Error(errorMessage);

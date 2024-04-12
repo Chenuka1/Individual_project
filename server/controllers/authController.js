@@ -1,8 +1,8 @@
+// AuthController.js
 const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('../config/config');
-
 
 // Controller function to handle user login
 const loginController = async (req, res) => {
@@ -25,8 +25,11 @@ const loginController = async (req, res) => {
             return res.status(400).json({ error: "Invalid email or password" });
         }
 
-        
-       res.status(200).json({ message: 'Sign in successful!' });
+        // Generate JWT token
+        const token = jwt.sign({ id: user._id }, config.jwtSecret, { expiresIn: '1h' });
+
+        // Send response with token
+        res.status(200).json({ token });
 
     } catch (error) {
         console.error('Error signing in:', error);

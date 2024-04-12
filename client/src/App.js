@@ -13,7 +13,7 @@ import Details from './pages/patientDetails';
 
 
 
-function App() {
+function Structure() {
   return (
     <div className="App">
       <BrowserRouter>
@@ -43,4 +43,4 @@ function App() {
   );
 }
 
-export default App;
+export default Structure;

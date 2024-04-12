@@ -41,7 +41,7 @@ export default function PatientDetails() {
             {patientDetails && (
                 <>
                     <h1>Patient Details</h1>
-                    <table border="1">
+                    <table >
                         <tbody>
                             <tr>
                                 <td>Birth Certificate ID:</td>

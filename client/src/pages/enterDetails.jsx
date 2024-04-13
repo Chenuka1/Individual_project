@@ -7,7 +7,8 @@ export default function Addetails() {
         pastDiseases: '',
         allergies: '',
         appointmentDate: '',
-        medications: ''
+        medications: '',
+        surgery:'',
     });
 
     useEffect(() => {
@@ -50,6 +51,7 @@ export default function Addetails() {
                 throw new Error('Failed to update medical history');
             }
             console.log('Medical history updated successfully');
+            alert("Medical history updated sucessfully ");
             // Optionally, redirect the user to another page or show a success message
         } catch (error) {
             console.error('Error updating medical history:', error);
@@ -69,6 +71,10 @@ export default function Addetails() {
                 <input type="date" name="appointmentDate" value={medicalHistory.appointmentDate} onChange={handleChange} />
                 <label htmlFor="medications">Medications:</label>
                 <input type="text" name="medications" value={medicalHistory.medications} onChange={handleChange} />
+                <label htmlFor="surgery">Surgery information:</label>
+                <input type="text" name="surgery" value={medicalHistory.surgery} onChange={handleChange} />
+
+
                 <button type="submit">Submit</button>
             </form>
         </div>

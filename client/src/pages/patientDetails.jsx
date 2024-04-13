@@ -27,6 +27,14 @@ export default function PatientDetails() {
         }
     };
 
+    const formatDate=(birthdate)=>{
+        const date=new Date(birthdate);
+        return date.toISOString().split('T')[0];
+
+
+
+    }
+
     return (
         <div className="details">
             <form onSubmit={handleSearch}>
@@ -53,7 +61,7 @@ export default function PatientDetails() {
                             </tr>
                             <tr>
                                 <td>Birthdate:</td>
-                                <td>{patientDetails.birthdate}</td>
+                                <td>{formatDate(patientDetails.birthdate)}</td>
                             </tr>
                             <tr>
                                 <td>Gender:</td>
@@ -83,10 +91,14 @@ export default function PatientDetails() {
                                 <td>Medications</td>
                                 <td>{patientDetails.medications}</td>
                             </tr>
+                            <tr>
+                                <td>Past surgery</td>
+                                <td>{patientDetails.surgery}</td>
+                            </tr>
                         </tbody>
                     </table>
 
-                    <Link to={`/addetails/${patientDetails.birthCertificateId}`}>Enter medical information for the patient</Link>
+                    <Link to={`/addetails/${patientDetails.birthCertificateId}`}><u>Enter medical information for the patient</u></Link>
                 </>
             )}
         </div>

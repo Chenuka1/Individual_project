@@ -43,7 +43,7 @@
     border: 1px solid #ccc;
   }
   
-  table td:first-child {
+  details table td:first-child {
     font-weight: bold;
   }
   

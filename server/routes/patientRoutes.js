@@ -62,7 +62,7 @@ const getMedicalHistory = async (birthCertificateId) => {
     // Find the patient by birth certificate ID and select only the medical history fields
     const patient = await Patient.findOne(
       { birthCertificateId: birthCertificateId },
-      { pastDiseases: 1, allergies: 1, appointmentDate: 1, medications: 1 }
+      { pastDiseases: 1, allergies: 1, appointmentDate: 1, medications: 1,surgery:1 }
     );
     return patient;
   } catch (error) {

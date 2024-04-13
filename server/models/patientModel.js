@@ -12,7 +12,9 @@ const patientSchema = new mongoose.Schema({
   pastDiseases: { type: String },
   allergies: { type: String },
   appointmentDate: { type: Date },
-  medications: { type: String }
+  medications: { type: String },
+  surgery: { type: String }
+
 });
 
 const Patient = mongoose.model('Patient', patientSchema); // Note the uppercase 'P' in 'Patient'

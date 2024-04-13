@@ -28,6 +28,9 @@ const Navbar = () => {
             <Link to="/details">Patient details</Link>
           </li>
           <li>
+            <Link to="/Vaccine">Immunization records</Link>
+          </li>
+          <li>
             <button onClick={handleLogout}>Logout</button>
           </li>
         </ul>

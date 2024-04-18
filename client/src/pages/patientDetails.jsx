@@ -96,6 +96,7 @@ export default function PatientDetails() {
                                 <td>{patientDetails.surgery}</td>
                             </tr>
                         </tbody>
+                        
                     </table>
                     <h1>Immunization records</h1>
                     <table>

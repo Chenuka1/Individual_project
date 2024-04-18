@@ -15,11 +15,14 @@ const Navbar = () => {
 
   return (
     <div className="navbar-container">
+      
+      
       <nav className="navbar">
+      <img src={image} alt="Logo" className="logo" /> 
+      
+      
         <ul>
-          <li>
-            <img src={image} alt="Logo" className="logo" />
-          </li>
+          
           <li>
             <Link to="/home">Home</Link>
           </li>
@@ -29,16 +32,21 @@ const Navbar = () => {
           <li>
             <Link to="/details">Patient details</Link>
           </li>
-          <li className="profile-icon" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-            <img src={image1} alt="Profile" className="profile-image" />
-            {isDropdownOpen && (
-              <ul className="dropdown">
-                <li onClick={handleLogout}>Logout</li>
-              </ul>
-            )}
+          <li>
+            <Link>Staff support</Link>
           </li>
+          <li>
+            <Link>Our services</Link>
+          </li>
+          
+            
+            
+          
         </ul>
+        <img src={image1} alt="Profile" className="profile-image" />
+        
       </nav>
+      
     </div>
   );
 };

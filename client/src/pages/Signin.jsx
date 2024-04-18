@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
-function Signin() {
+export default function Signin() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: "",
@@ -28,11 +27,16 @@ function Signin() {
 
             if (response.ok) {
                 const { token } = await response.json();
-                localStorage.setItem('token', token); // Store token in local storage
-                navigate("/home");
+                // Assuming you're validating the token on the server-side
+                if (token) {
+                    localStorage.setItem('token', token); // Store token in local storage
+                    navigate("/home");
+                } else {
+                    throw new Error('No token received');
+                }
             } else {
                 const errorMessage = await response.text();
-                throw new Error(errorMessage);
+                throw new Error(errorMessage || 'Failed to sign in');
             }
         } catch (error) {
             console.error('Error signing in:', error);
@@ -74,5 +78,3 @@ function Signin() {
         </div>
     );
 };
-
-export default Signin;

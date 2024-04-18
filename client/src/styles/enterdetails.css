@@ -1,4 +1,127 @@
-table td{
-
-    width: 200px;
+.container1 {
+  display: flex;
+  justify-content: space-between; /* Align forms to start and end of container */
+  margin: 20px auto; /* Adjust margin as needed */
 }
+
+.medical-history-container,
+.vaccine-history-container {
+  flex: 1; /* Allow containers to grow and occupy available space */
+  margin-right: 20px; /* Add some space between the forms */
+}
+
+/* Rest of your existing CSS styles */
+
+
+
+
+/* Styles for form container */
+.medical-history {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styles for form title */
+  .medical-history h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Styles for form */
+  .medical-history form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Styles for form inputs */
+  .medical-history label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .medical-history input[type="text"],
+  .medical-history input[type="date"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Styles for submit button */
+  .medical-history button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .medical-history button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styles for vaccine history container */
+.vaccine-history {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for vaccine history title */
+.vaccine-history h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Styles for vaccine history form */
+.vaccine-history form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styles for vaccine history form inputs */
+.vaccine-history label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.vaccine-history input[type="text"],
+.vaccine-history input[type="date"] {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Styles for vaccine history submit button */
+.vaccine-history button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.vaccine-history button:hover {
+  background-color: #0056b3;
+}
+
+
+  
+  
+  

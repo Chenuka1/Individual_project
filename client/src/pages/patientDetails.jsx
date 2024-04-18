@@ -39,7 +39,7 @@ export default function PatientDetails() {
         <div className="details">
             <form onSubmit={handleSearch}>
                 <div className='search'>
-                    <input type="text" placeholder="Enter Birth Certificate ID" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+                    <input type="text" placeholder="Enter Birth Certificate ID to searh the patient" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                     <button type="submit">Search</button>
                 </div>
             </form>
@@ -95,6 +95,37 @@ export default function PatientDetails() {
                                 <td>Past surgery</td>
                                 <td>{patientDetails.surgery}</td>
                             </tr>
+                        </tbody>
+                    </table>
+                    <h1>Immunization records</h1>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Completed vaccine</td>
+                                <td>{patientDetails.vaccinename}</td>
+                            </tr>
+                            <tr>
+                                <td>Date of administration</td>
+                                <td>{formatDate(patientDetails.vaccinedate)}</td>
+                            </tr>
+                            <tr>
+                                <td>age</td>
+                                <td>{patientDetails.age}</td>
+                            </tr>
+                            <tr>
+                                <td>Upcoming vaccine name</td>
+                                <td>{patientDetails.upcomingVaccine}</td>
+                            </tr>
+                            <tr>
+                                <td>Upcoming vaccine date</td>
+                                <td>{formatDate(patientDetails.upcomingvaccinedate)}</td>
+                            </tr>
+
+
+
+
+
+
                         </tbody>
                     </table>
 

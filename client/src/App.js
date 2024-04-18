@@ -33,7 +33,7 @@ function Structure() {
       <br />
       <Routes>
         <Route path="/" element={<Signin />} />
-        <Route path="/register" element={<Addpatients />} /> 
+        <Route path="/addpatients" element={<Addpatients />} /> 
         <Route path="/home" element={<HomePage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/addetails/:birthId" element={<Addetails />} />

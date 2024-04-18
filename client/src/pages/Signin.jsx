@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import '../styles/signin.css';
+
 
 function Signin() {
     const navigate = useNavigate();
@@ -69,7 +69,7 @@ function Signin() {
                 </div>
 
                 <input type="submit" value="Sign in" className="signin-input" />
-                <p className="signin-paragraph">Don't have an account? <a href="signup" className="signin-link">Create account</a></p>
+                
             </form>
         </div>
     );

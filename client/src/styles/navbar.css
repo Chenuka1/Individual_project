@@ -37,3 +37,9 @@ a:hover {
   width: 150px; /* Adjust size as needed */
   height: 80px; /* Adjust size as needed */
 }
+/* navbar.css */
+.profile-image {
+  width: 60px; /* Adjust the width as needed */
+  height: 60px; /* Adjust the height as needed */
+  border-radius: 50%; /* Make it round */
+}

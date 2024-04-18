@@ -13,7 +13,16 @@ const patientSchema = new mongoose.Schema({
   allergies: { type: String },
   appointmentDate: { type: Date },
   medications: { type: String },
-  surgery: { type: String }
+  surgery: { type: String },
+  vaccinename: {type:String},
+  vaccinedate:{type:Date},
+  age:{type:String},
+  upcomingVaccine:{type:String},
+  upcomingvaccinedate:{type:Date}
+
+
+
+
 
 });
 

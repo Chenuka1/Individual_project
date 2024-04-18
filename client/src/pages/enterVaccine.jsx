@@ -7,8 +7,10 @@ export default function Entervaccine(){
         <div>
 
             <form>
-                <label>Enter vaccine name</label>
+                <label html for="">Enter vaccine name</label>
                 <input type="text" placeholder="Enter vaccine name"/>
+
+                
 
 
 

@@ -1,7 +1,7 @@
 .details {
     margin: 20px auto;
     padding: 20px;
-    width: 80%;
+    width: 65%;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
@@ -16,6 +16,7 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    
   }
   
   .search button {

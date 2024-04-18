@@ -59,11 +59,8 @@ router.get('',async(req,res)=>{
 // Function to fetch medical history by birth certificate ID
 const getMedicalHistory = async (birthCertificateId) => {
   try {
-    // Find the patient by birth certificate ID and select only the medical history fields
-    const patient = await Patient.findOne(
-      { birthCertificateId: birthCertificateId },
-      { pastDiseases: 1, allergies: 1, appointmentDate: 1, medications: 1,surgery:1 }
-    );
+    // Find the patient by birth certificate ID and select all fields
+    const patient = await Patient.findOne({ birthCertificateId: birthCertificateId });
     return patient;
   } catch (error) {
     console.error('Error fetching medical history:', error);

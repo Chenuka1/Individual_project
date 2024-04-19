@@ -28,7 +28,8 @@ text-align: center;
 
 .image-container {
   position: relative;
-  margin-right: 10px; /* Adjust spacing between images */
+  margin-right: 30px; /* Adjust spacing between images */
+  padding-left:20px;
 }
 
 .info-button {

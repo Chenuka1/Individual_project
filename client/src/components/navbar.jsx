@@ -15,38 +15,29 @@ const Navbar = () => {
 
   return (
     <div className="navbar-container">
-      
-      
       <nav className="navbar">
-      <img src={image} alt="Logo" className="logo" /> 
-      
-      
+        <img src={image} alt="Logo" className="logo" />
         <ul>
-          
-          <li>
-            <Link to="/home">Home</Link>
-          </li>
-          <li>
-            <Link to="/addpatients">Add patients</Link>
-          </li>
-          <li>
-            <Link to="/details">Patient details</Link>
-          </li>
-          <li>
-            <Link>Staff support</Link>
-          </li>
-          <li>
-            <Link>Our services</Link>
-          </li>
-          
-            
-            
-          
+          <li><Link to="/home">Home</Link></li>
+          <li><Link to="/addpatients">Add patients</Link></li>
+          <li><Link to="/details">Patient details</Link></li>
+          <li><Link to="/services">Services</Link></li>
+          <li><Link to="/staff">Staff support</Link></li>
         </ul>
-        <img src={image1} alt="Profile" className="profile-image" />
-        
+        <div className="profile-dropdown">
+          <img
+            src={image1}
+            alt="Profile"
+            className="profile-image"
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          />
+          {isDropdownOpen && (
+            <ul className="dropdown-menu">
+              <li onClick={handleLogout}>Logout</li>
+            </ul>
+          )}
+        </div>
       </nav>
-      
     </div>
   );
 };

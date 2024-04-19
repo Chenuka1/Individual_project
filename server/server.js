@@ -1,18 +1,28 @@
 // server.js
-require('dotenv').config();
+
+require('dotenv').config(); 
 const express = require('express');
+const session = require('express-session');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const patientRoutes = require('./routes/patientRoutes');
 const searchRoutes = require('./routes/searchRoutes');
+const isAuthenticated = require('./middleware/authMiddleware'); // Import the isAuthenticated middleware
 
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Session middleware
+app.use(session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: true // or false, depending on your use case
+}));
 
 // Logging middleware
 app.use((req, res, next) => {
@@ -34,10 +44,10 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
   });
 
 // Routes
-app.use('/api/search',searchRoutes);
-app.use('/api/patients',  patientRoutes);
-app.use('/api/users',  userRoutes); // Use authenticateToken middleware here
-app.use('/api',  authRoutes);
+app.use('/api/search', searchRoutes);
+app.use('/api/patients', patientRoutes);
+app.use('/api/users',  userRoutes); // Apply isAuthenticated middleware to protect this route
+app.use('/api', authRoutes);
 
 // Default route
 app.get('/', (req, res) => {

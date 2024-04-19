@@ -1,4 +1,3 @@
-
 //patientDetails.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -27,19 +26,16 @@ export default function PatientDetails() {
         }
     };
 
-    const formatDate=(birthdate)=>{
-        const date=new Date(birthdate);
+    const formatDate = (birthdate) => {
+        const date = new Date(birthdate);
         return date.toISOString().split('T')[0];
-
-
-
     }
 
     return (
         <div className="details">
             <form onSubmit={handleSearch}>
                 <div className='search'>
-                    <input type="text" placeholder="Enter Birth Certificate ID to searh the patient" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+                    <input type="text" placeholder="Enter Birth Certificate ID to search for the patient" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                     <button type="submit">Search</button>
                 </div>
             </form>
@@ -49,7 +45,7 @@ export default function PatientDetails() {
             {patientDetails && (
                 <>
                     <h1>Patient Details</h1>
-                    <table >
+                    <table>
                         <tbody>
                             <tr>
                                 <td>Birth Certificate ID:</td>
@@ -80,59 +76,55 @@ export default function PatientDetails() {
                                 <td>{patientDetails.registeredHospital}</td>
                             </tr>
                             <tr>
-                                <td>Past diseases</td>
+                                <td>Past Diseases:</td>
                                 <td>{patientDetails.pastDiseases}</td>
                             </tr>
                             <tr>
-                                <td>Allergies</td>
+                                <td>Allergies:</td>
                                 <td>{patientDetails.allergies}</td>
                             </tr>
                             <tr>
-                                <td>Medications</td>
+                                <td>Medications:</td>
                                 <td>{patientDetails.medications}</td>
                             </tr>
                             <tr>
-                                <td>Past surgery</td>
+                                <td>Past Surgery:</td>
                                 <td>{patientDetails.surgery}</td>
                             </tr>
                         </tbody>
-                        
                     </table>
-                    <h1>Immunization records</h1>
+                    <h1>Immunization Records</h1>
                     <table>
                         <tbody>
                             <tr>
-                                <td>Completed vaccine</td>
+                                <td>Completed Vaccine:</td>
                                 <td>{patientDetails.vaccinename}</td>
                             </tr>
                             <tr>
-                                <td>Date of administration</td>
+                                <td>Date of Administration:</td>
                                 <td>{formatDate(patientDetails.vaccinedate)}</td>
                             </tr>
                             <tr>
-                                <td>age</td>
+                                <td>Age:</td>
                                 <td>{patientDetails.age}</td>
                             </tr>
                             <tr>
-                                <td>Upcoming vaccine name</td>
+                                <td>Upcoming Vaccine Name:</td>
                                 <td>{patientDetails.upcomingVaccine}</td>
                             </tr>
                             <tr>
-                                <td>Upcoming vaccine date</td>
+                                <td>Upcoming Vaccine Date:</td>
                                 <td>{formatDate(patientDetails.upcomingvaccinedate)}</td>
                             </tr>
-
-
-
-
-
-
                         </tbody>
                     </table>
 
                     <Link to={`/addetails/${patientDetails.birthCertificateId}`}><u>Enter medical information for the patient</u></Link>
                 </>
             )}
+            <div className='emptyspace'>
+
+            </div>
         </div>
     );
 }

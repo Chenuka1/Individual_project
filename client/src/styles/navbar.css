@@ -1,28 +1,29 @@
 /* navbar.css */
+
 .navbar-container {
   padding: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar {
-  background-color:white;
+  background-color: white;
   padding: 10px;
-  display: flex; /* Use flexbox */
-  /* Horizontally align items to the center */
+  display: flex;
 }
 
 ul {
-  margin-left: 400px;
   list-style-type: none;
-  margin-right: 350px;
+  margin-left: 300px;
   padding: 0;
   display: flex;
-  align-items: center; /* Vertically align items */
+  justify-content: center;
 }
 
 li {
-  
-  margin-right: 20px;
+  margin-right: 40px;
   font-size: 20px;
 }
 
@@ -37,16 +38,38 @@ a:hover {
 }
 
 .logo {
-  width: 150px; /* Adjust size as needed */
-  height: 60px; /* Adjust size as needed */
+  width: 150px;
+  height: 60px;
 }
 
-.profile-icon {
-  position: relative; /* Change position to relative */
+.profile-dropdown {
+  position: relative;
 }
 
 .profile-image {
-  width: 60px; /* Adjust the width as needed */
-  height: 60px; /* Adjust the height as needed */
-  border-radius: 50%; /* Make it round */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-left: 400px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 40px; /* Adjust distance from the profile image */
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  list-style: none;
+}
+
+.dropdown-menu li {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
 }

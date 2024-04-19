@@ -1,35 +1,27 @@
-// AuthController.js
+// authController.js
 const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const config = require('../config/config');
 
-// Controller function to handle user login
-const loginController = async (req, res) => {
+const authController = async (req, res) => {
     try {
         const { email, password } = req.body;
 
         // Find the user based on email
         const user = await User.findOne({ email });
 
-        // If user doesn't exist, return error
-        if (!user) {
-            return res.status(400).json({ error: "Invalid email or password" });
+        // If user doesn't exist or password is incorrect, return error
+        if (!user || !(await bcrypt.compare(password, user.password))) {
+            return res.status(401).json({ error: "Invalid email or password" });
         }
 
-        // Compare passwords
-        const isPasswordMatch = await bcrypt.compare(password, user.password);
+        // Set user data in session
+        req.session.user = user;
 
-        // If passwords don't match, return error
-        if (!isPasswordMatch) {
-            return res.status(400).json({ error: "Invalid email or password" });
-        }
+        // Set a cookie to maintain session
+        res.cookie('user_id', user._id, { maxAge: 900000, httpOnly: true });
 
-        // Generate JWT token
-        const token = jwt.sign({ id: user._id }, config.jwtSecret, { expiresIn: '1h' });
-
-        // Send response with token
-        res.status(200).json({ token });
+        // Send response with user data or token if needed
+        res.status(200).json({ user });
 
     } catch (error) {
         console.error('Error signing in:', error);
@@ -37,4 +29,4 @@ const loginController = async (req, res) => {
     }
 };
 
-module.exports = loginController;
+module.exports = authController;

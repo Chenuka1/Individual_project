@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import '../styles/signin.css'
+
 export default function Signin() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -26,13 +28,15 @@ export default function Signin() {
             });
 
             if (response.ok) {
-                const { token } = await response.json();
-                // Assuming you're validating the token on the server-side
-                if (token) {
-                    localStorage.setItem('token', token); // Store token in local storage
+                
+                const { user } = await response.json();
+                // Assuming you're receiving user data from the server upon successful login
+                if (user) {
+                    // Optionally, you can store user data in localStorage
+                    localStorage.setItem('user', JSON.stringify(user)); 
                     navigate("/home");
                 } else {
-                    throw new Error('No token received');
+                    throw new Error('No user data received');
                 }
             } else {
                 const errorMessage = await response.text();
@@ -45,8 +49,8 @@ export default function Signin() {
     };
 
     return (
-        <div>
-            <form className="container" onSubmit={handleSubmit}>
+        <div className="sign">
+            <form className="signinform" onSubmit={handleSubmit}>
                 <h1>Log in</h1>
                 <div>
                     <label htmlFor="email">Email address</label>

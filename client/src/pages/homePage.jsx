@@ -1,19 +1,18 @@
+//homepage
 import React, { useState, useEffect } from 'react';
+import UseAuth from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import '../styles/homepage.css';
 import slider1 from '../assets/slider-1.jpg';
 import slider2 from '../assets/slider-2.jpg';
 import slider3 from '../assets/slider-3.jpg';
 import vaccineImage from '../assets/vaccines.png'
 import record from '../assets/medical record.jpg'
-import growth from '../assets/babygrowth.png'
+import growth from '../assets/babygrowth1.png'
 
 export default function HomePage() {
-
-  function handleViewInfo(imageType) {
-    // Logic to handle the button click based on the image type
-    console.log("View Info button clicked for", imageType);
-    // Add your logic here
-  }
+  
+ 
   const [currentImage, setCurrentImage] = useState(1);
 
   // Define interval duration in milliseconds (e.g., 5 seconds)
@@ -60,37 +59,21 @@ export default function HomePage() {
       />
 
       <div className="welcome">
+        <br></br>
         <h1>Welcome to Baby care!</h1>
         
       </div>
       <div className='imageinfo'>
-  <div className="image-container">
-    <img src={vaccineImage} alt="Vaccine" />
-    <div className="button-container">
-      <button className="info-button" onClick={() => handleViewInfo('vaccine')}>View Info</button>
-    </div>
-  </div>
-  <div className="image-container">
-    <img src={record} alt="medical record" />
-    <div className="button-container">
-      <button className="info-button" onClick={() => handleViewInfo('record')}>View Info</button>
-    </div>
-  </div>
-  <div className="image-container">
-    <img src={growth} alt="growth cycle" />
-    <div className="button-container">
-      <button className="info-button" onClick={() => handleViewInfo('growth')}>View Info</button>
-    </div>
-  </div>
-</div>
-
-
-
-
-      
-
-      
-
+        <div className="image-container">
+          <img src={vaccineImage} alt="Vaccine" />
+        </div>
+        <div className="image-container">
+          <img src={record} alt="medical record" />
+        </div>
+        <div className="image-container">
+          <img src={growth} alt="growth cycle" />
+        </div>
+      </div>
     </div>
   );
 }

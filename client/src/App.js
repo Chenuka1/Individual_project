@@ -11,6 +11,8 @@ import Logout from './pages/logout';
 import Details from './pages/patientDetails';
 import Vaccine from './pages/vaccineDetails';
 import Entervaccine from './pages/enterVaccine';
+import Services from './pages/services';
+import Staff from './pages/staff';
 
 function App() {
   return (
@@ -41,7 +43,10 @@ function Structure() {
         <Route path="/details" element={<Details />} />
         <Route path="/vaccine" element={<Vaccine/>}/>
         <Route path="/entervaccine" element={<Entervaccine/>}/>
+        <Route path="/services" element={<Services/>}/>
+        <Route path="/staff" element={<Staff/>}/>
       </Routes>
+      <br></br>
       <br></br>
       {!isSigninPage && <Footer />}
     </div>

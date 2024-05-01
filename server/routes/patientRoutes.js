@@ -31,18 +31,28 @@ router.put('/:birthCertificateId/medical-history', async (req, res) => {
   }
 });
 
-// Create a new patient
+const bcrypt = require('bcrypt');
+
 router.post('/create', async (req, res) => {
   try {
-    const patientData = req.body;
-    const newPatient = new Patient(patientData);
+    const { password, ...patientData } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10); // Hashing the password with a salt round of 10
+
+    // Replace the plain text password with the hashed one
+    const newPatient = new Patient({ ...patientData, password: hashedPassword });
+    
     await newPatient.save();
+    
+    // Don't include the password in the response
+    delete newPatient.password;
+
     res.status(201).json({ message: 'Patient created successfully', patient: newPatient });
   } catch (error) {
     console.error('Error creating patient:', error);
     res.status(500).json({ message: 'Internal server error', error: error.message });
   }
 });
+
 
 //route to fetch patient medical histroy
 

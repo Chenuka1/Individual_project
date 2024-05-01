@@ -44,18 +44,31 @@ a:hover {
 
 .profile-dropdown {
   position: relative;
+  padding-left: 400px;
+}
+
+.profile-icon {
+  position: relative;
+  cursor: pointer;
 }
 
 .profile-image {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  margin-left: 400px;
+}
+
+.profile-icon i {
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  transform: translateY(-50%);
+  color: #888;
 }
 
 .dropdown-menu {
   position: absolute;
-  top: 40px; /* Adjust distance from the profile image */
+  top: 100%;
   right: 0;
   background-color: white;
   border: 1px solid #ccc;
@@ -63,10 +76,15 @@ a:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px;
   list-style: none;
+  /* Updated styles for vertical display */
+  display: flex;
+  flex-direction: column; /* Set flex direction to column */
+  align-items: flex-start; /* Align items to start */
 }
 
+
 .dropdown-menu li {
-  padding: 10px 20px;
+  padding: 10px 10px;
   cursor: pointer;
 }
 

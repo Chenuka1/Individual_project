@@ -6,9 +6,10 @@ import '../styles/homepage.css';
 import slider1 from '../assets/slider-1.jpg';
 import slider2 from '../assets/slider-2.jpg';
 import slider3 from '../assets/slider-3.jpg';
-import vaccineImage from '../assets/vaccines.png'
-import record from '../assets/medical record.jpg'
-import growth from '../assets/babygrowth1.png'
+
+import Doctor from '../assets/Doctor.jpg';
+import nurse from '../assets/nurse2.jpg';
+import vaccine from '../assets/vaccine2.jpg';
 
 export default function HomePage() {
   
@@ -52,6 +53,7 @@ export default function HomePage() {
 
   return (
     <div className="homepage-container">
+      <br></br>
       <img 
         src={getImage()} 
         alt={`Slider ${currentImage}`} 
@@ -65,13 +67,13 @@ export default function HomePage() {
       </div>
       <div className='imageinfo'>
         <div className="image-container">
-          <img src={vaccineImage} alt="Vaccine" />
+          <img src={Doctor} alt="image of a doctor" />
         </div>
         <div className="image-container">
-          <img src={record} alt="medical record" />
+          <img src={nurse} alt="image of nurse" />
         </div>
         <div className="image-container">
-          <img src={growth} alt="growth cycle" />
+          <img src={vaccine} alt="baby gets vaccine" />
         </div>
       </div>
     </div>

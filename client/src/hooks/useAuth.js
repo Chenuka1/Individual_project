@@ -13,7 +13,7 @@ export default function UseAuth() {
       setAuthenticated(true);
 
     } else {
-      navigate('/signin'); // Redirect to the sign-in page if user is not authenticated
+      navigate('/'); // Redirect to the sign-in page if user is not authenticated
     }
   }, [navigate]);
 

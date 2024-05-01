@@ -97,11 +97,13 @@ function Addpatients() {
         setFormData({
           birthCertificateId: "",
           fullName: "",
+          usename:"",
           birthdate: "",
           gender: "",
           parentsName: "",
           contactNumber: "",
-          registeredHospital: ""
+          registeredHospital: "",
+          password: ""
         });
       } else {
         console.error("Failed to create user");
@@ -132,6 +134,24 @@ function Addpatients() {
           placeholder="Enter full name"
           name="fullName"
           value={formData.fullName}
+          onChange={handleChange}
+        />
+        <br />
+        <label htmlFor="fullName">Enter the username</label>
+        <input
+          type="text"
+          placeholder="Enter username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+        />
+        <br />
+        <label htmlFor="fullName">Enter the password</label>
+        <input
+          type="password"
+          placeholder="Enter password"
+          name="password"
+          value={formData.password}
           onChange={handleChange}
         />
         <br />
@@ -188,6 +208,7 @@ function Addpatients() {
           value={formData.contactNumber}
           onChange={handleChange}
         />
+        
         <br />
         <label htmlFor="registeredHospital">Select registered hospital</label>
         <select

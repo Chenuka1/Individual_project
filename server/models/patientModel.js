@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const patientSchema = new mongoose.Schema({
   birthCertificateId: { type: String, required: true },
   fullName: { type: String, required: true },
+  username: { type: String, required: true },
+  password:{type:String,required:true},
   birthdate: { type: Date },
   gender: { type: String, enum: ['male', 'female'] },
   parentsName: { type: String },

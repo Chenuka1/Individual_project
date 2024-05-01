@@ -32,7 +32,8 @@ function Structure() {
   return (
     <div className="App">
       {!isSigninPage && <Navbar />}
-      <br />
+      <br></br>
+      
       <Routes>
         <Route path="/" element={<Signin />} />
         <Route path="/addpatients" element={<Addpatients />} /> 

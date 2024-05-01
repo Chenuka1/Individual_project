@@ -1,0 +1,28 @@
+.image1 {
+    text-align: center; /* Center horizontally */
+  }
+  
+  .image1 img {
+    vertical-align: middle; /* Align the image vertically in the middle */
+    width: 80%; /* Ensure the image doesn't exceed its container */
+    height: 500px;
+     /* Ensure the image doesn't exceed its container */
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .healthcare img {
+    height: 400px;
+    width: 400px;
+    padding-right: 30px;
+    
+  }
+  
+  .healthcare {
+    text-align: left;
+    padding-left: 40px;
+    
+  }
+  

@@ -1,0 +1,29 @@
+.services {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    background-color:#a7eef2;
+    
+}
+
+.services h1 {
+    margin-right: 40px; /* Adjust spacing between text and image */
+    padding-left:100px;
+}
+
+.services img{
+
+    height: 480px;
+    width: 470px;
+}
+
+.services1 img{
+  
+    height: 460px;
+    width:450px;
+
+    padding-left:30px;
+}
+
+

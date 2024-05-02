@@ -1,10 +1,11 @@
-// app.js
-
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const loginRoute = require('./routes/login');
+const admin = require('firebase-admin');
+const serviceAccount = require('./serviceaccount/notification.json');
+const notificationRoute=require('./routes/notificationRoute')
 
 const app = express();
 
@@ -27,3 +28,15 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 
 // Routes
 app.use('/api', loginRoute);
+
+app.use('/api',notificationRoute);
+
+// Initialize Firebase Admin SDK with service account credentials
+try {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
+  });
+  console.log('Firebase Admin SDK initialized successfully');
+} catch (error) {
+  console.error('Error initializing Firebase Admin SDK:', error);
+}

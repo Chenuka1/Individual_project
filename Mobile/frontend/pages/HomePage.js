@@ -1,7 +1,18 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const HomePage = () => {
+  const navigation = useNavigation();
+
+  const goToLoginPage = () => {
+    navigation.navigate('Login');
+  };
+
+  const goToNotificationPage = () => {
+    navigation.navigate('Notification');
+  };
+
   return (
     <View style={styles.container}>
       <Image
@@ -24,6 +35,12 @@ const HomePage = () => {
           style={styles.image2}
         />
       </View>
+      <TouchableOpacity style={styles.button} onPress={goToLoginPage}>
+        <Text style={styles.buttonText}>Login Page</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={goToNotificationPage}>
+        <Text style={styles.buttonText}>Notification Page</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -58,6 +75,17 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     marginRight: 10, // Add some margin between images
+  },
+  button: {
+    marginTop: 10,
+    backgroundColor: 'blue',
+    padding: 10,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 16,
   },
 });
 

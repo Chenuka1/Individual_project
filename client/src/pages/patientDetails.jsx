@@ -1,7 +1,7 @@
 //patientDetails.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/patientDetails.css'
+import '../styles/patientDetails.css';
 
 export default function PatientDetails() {
     const [searchQuery, setSearchQuery] = useState('');
@@ -26,10 +26,16 @@ export default function PatientDetails() {
         }
     };
 
-    const formatDate = (birthdate) => {
-        const date = new Date(birthdate);
-        return date.toISOString().split('T')[0];
-    }
+    const formatDate = (dateString) => {
+        if (!dateString) return ''; // Return empty string if date is null or undefined
+        try {
+            const date = new Date(dateString);
+            return date.toISOString().split('T')[0];
+        } catch (error) {
+            console.error('Error formatting date:', error);
+            return 'Invalid Date';
+        }
+    };
 
     return (
         <div className="details">
@@ -122,9 +128,7 @@ export default function PatientDetails() {
                     <Link to={`/addetails/${patientDetails.birthCertificateId}`}><u>Enter medical information for the patient</u></Link>
                 </>
             )}
-            <div className='emptyspace'>
-
-            </div>
+            <div className='emptyspace'></div>
         </div>
     );
 }

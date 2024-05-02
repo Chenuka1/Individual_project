@@ -39,7 +39,7 @@ const LoginPage = ({ navigation }) => {
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        placeholder="Username"
+        placeholder=" enter Username"
         value={username}
         onChangeText={setUsername}
         placeholderTextColor="#aaa"

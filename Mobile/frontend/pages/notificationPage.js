@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 
-const Notification = () => {
+const Notification = ({ token }) => {
     const [notifications, setNotifications] = useState([]);
 
     useEffect(() => {
@@ -11,8 +11,12 @@ const Notification = () => {
 
     const fetchNotifications = async () => {
         try {
-            // Fetch notifications from backend
-            const response = await fetch('http://10.0.2.2:5000/api/notifications');
+            // Fetch notifications from backend with JWT token in headers
+            const response = await fetch('http://10.0.2.2:5000/api/notifications', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             const data = await response.json();
 
             // Set fetched notifications in state

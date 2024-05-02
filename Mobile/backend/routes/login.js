@@ -30,6 +30,11 @@ router.post('/login', async (req, res) => {
     // Generate token and send it back
     const token = generateToken(patient);
     res.status(200).json({ success: true, token });
+    console.log(token);
+  //   await AsyncStorage.setItem('token', token);
+  //  const storedToken = await AsyncStorage.getItem('token');
+  //   console.log('Token set in AsyncStorage:', storedToken);
+
   } catch (error) {
     console.error('Error during login:', error);
     res.status(500).json({ success: false, message: 'Internal server error' });

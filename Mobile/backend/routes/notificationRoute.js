@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const Patient = require('../models/patientModel');
 
+
 // GET endpoint to fetch notifications
 router.get('/notifications', async (req, res) => {
   try {

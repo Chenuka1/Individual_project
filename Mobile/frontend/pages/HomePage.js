@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { FontAwesome } from '@expo/vector-icons'; // Importing FontAwesome icons
 
 const HomePage = () => {
   const navigation = useNavigation();
@@ -35,12 +36,16 @@ const HomePage = () => {
           style={styles.image2}
         />
       </View>
+      <View style={styles.buttoncontainer}>
       <TouchableOpacity style={styles.button} onPress={goToLoginPage}>
-        <Text style={styles.buttonText}>Login Page</Text>
+        <FontAwesome name="user" size={20} color="white" />
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={goToNotificationPage}>
-        <Text style={styles.buttonText}>Notification Page</Text>
+        <FontAwesome name="bell" size={20} color="white" />
       </TouchableOpacity>
+
+
+      </View>
     </View>
   );
 };
@@ -76,16 +81,21 @@ const styles = StyleSheet.create({
     height: 200,
     marginRight: 10, // Add some margin between images
   },
+  buttoncontainer:{
+    flexDirection: 'row',
+    marginTop: 30,
+
+
+
+  },
   button: {
-    marginTop: 10,
-    backgroundColor: 'blue',
+    marginLeft:10,
+   
+    backgroundColor: 'black',
     padding: 10,
     borderRadius: 5,
-  },
-  buttonText: {
-    color: 'white',
-    textAlign: 'center',
-    fontSize: 16,
+    flexDirection: 'row', // Align icon and text horizontally
+    alignItems: 'center', // Align items vertically
   },
 });
 

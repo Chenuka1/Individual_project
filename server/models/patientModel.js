@@ -5,6 +5,7 @@ const patientSchema = new mongoose.Schema({
   birthCertificateId: { type: String, required: true },
   fullName: { type: String, required: true },
   username: { type: String, required: true },
+  blood:{type:String,required:true},
   password:{type:String,required:true},
   birthdate: { type: Date },
   gender: { type: String, enum: ['male', 'female'] },
@@ -18,9 +19,10 @@ const patientSchema = new mongoose.Schema({
   surgery: { type: String },
   vaccinename: {type:String},
   vaccinedate:{type:Date},
-  age:{type:String},
+  ageinMonths:{type:Number},
   upcomingVaccine:{type:String},
-  upcomingvaccinedate:{type:Date}
+  upcomingvaccinedate:{type:Date},
+  upcomingvaccinestatus:{type:String,enum:['completed','pending']}
 
 
 

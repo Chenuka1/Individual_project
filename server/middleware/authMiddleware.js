@@ -1,15 +1,15 @@
-// isAuthenticated.js
+// authMiddleware.js
 
-// Middleware to check if user is authenticated
-const isAuthenticated = (req, res, next) => {
-    // Check if user session exists or if user_id cookie is present
-    if (req.session.user || req.cookies.user_id) {
-        // User is authenticated, proceed to the next middleware or route handler
-        next();
+const authMiddleware = (req, res, next) => {
+    // Check if the user is authenticated
+    if (req.session && req.session.user_id) {
+      // If authenticated, allow the request to proceed
+      next();
     } else {
-        // User is not authenticated, send unauthorized response
-        res.status(401).json({ error: "Unauthorized" });
+      // If not authenticated, redirect to the login page
+      res.redirect('/login');
     }
-};
-
-module.exports = isAuthenticated;
+  };
+  
+  module.exports = authMiddleware;
+  

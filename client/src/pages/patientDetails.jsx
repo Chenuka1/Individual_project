@@ -78,6 +78,10 @@ export default function PatientDetails() {
                                 <td>{patientDetails.contactNumber}</td>
                             </tr>
                             <tr>
+                                <td>Blood group:</td>
+                                <td>{patientDetails.blood}</td>
+                            </tr>
+                            <tr>
                                 <td>Registered Hospital:</td>
                                 <td>{patientDetails.registeredHospital}</td>
                             </tr>
@@ -110,10 +114,7 @@ export default function PatientDetails() {
                                 <td>Date of Administration:</td>
                                 <td>{formatDate(patientDetails.vaccinedate)}</td>
                             </tr>
-                            <tr>
-                                <td>Age:</td>
-                                <td>{patientDetails.age}</td>
-                            </tr>
+                            
                             <tr>
                                 <td>Upcoming Vaccine Name:</td>
                                 <td>{patientDetails.upcomingVaccine}</td>
@@ -121,6 +122,10 @@ export default function PatientDetails() {
                             <tr>
                                 <td>Upcoming Vaccine Date:</td>
                                 <td>{formatDate(patientDetails.upcomingvaccinedate)}</td>
+                            </tr>
+                            <tr>
+                                <td>Upcoming vaccine status</td>
+                                <td>{patientDetails.upcomingvaccinestatus}</td>
                             </tr>
                         </tbody>
                     </table>

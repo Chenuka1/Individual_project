@@ -9,8 +9,16 @@ const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleLogout = () => {
-    localStorage.removeItem('token'); // Remove token from local storage
-    navigate('/'); // Redirect to the login page
+    localStorage.removeItem('token');
+    navigate('/');
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const closeDropdown = () => {
+    setIsDropdownOpen(false);
   };
 
   return (
@@ -19,22 +27,24 @@ const Navbar = () => {
         <img src={image} alt="Logo" className="logo" />
         <ul>
           <li><Link to="/home">Home</Link></li>
-          <li><Link to="/services">Services</Link></li>
-          <li><Link to="/addpatients">Add patients</Link></li>
-          <li><Link to="/details">Patient details</Link></li>
+          <li><Link to="/addpatients">Add Patients</Link></li>
+          <li><Link to="/details">patient details</Link></li> 
+          <li><Link to="/admin">admin dashboard</Link></li>  
+          <li><Link to="/services">Services</Link></li>        
+          
         </ul>
         <div className="profile-dropdown">
           <img
             src={image1}
             alt="Profile"
             className="profile-image"
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            onClick={toggleDropdown}
           />
-          <i className={`fas fa-caret-${isDropdownOpen ? 'up' : 'down'}`} onClick={() => setIsDropdownOpen(!isDropdownOpen)}></i>
+          <i className={`fas fa-caret-${isDropdownOpen ? 'up' : 'down'}`} onClick={toggleDropdown}></i>
           {isDropdownOpen && (
-            <ul className="dropdown-menu">
+            <ul className="dropdown-menu show-dropdown" onMouseLeave={closeDropdown}>
               <li onClick={handleLogout}>Logout</li>
-              <li><Link to="">Signin</Link></li>
+              <li><Link to="">Sign In</Link></li>
             </ul>
           )}
         </div>

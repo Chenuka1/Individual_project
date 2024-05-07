@@ -11,7 +11,8 @@ function Addpatients() {
     gender: "",
     parentsName: "",
     contactNumber: "",
-    registeredHospital: ""
+    registeredHospital: "",
+   
   });
 
   const [formErrors, setFormErrors] = useState({});
@@ -103,7 +104,8 @@ function Addpatients() {
           parentsName: "",
           contactNumber: "",
           registeredHospital: "",
-          password: ""
+          password: "",
+
         });
       } else {
         console.error("Failed to create user");

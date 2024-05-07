@@ -1,0 +1,56 @@
+/* css/medicalstaff.css */
+
+/* Container styling */
+.medical-staff-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    
+    background-color: #f9f9f9;
+  }
+  
+  /* Form styling */
+  .medical-staff-form {
+    margin-top: 20px;
+  }
+  
+  .medical-staff-form h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .medical-staff-form table {
+    width: 100%;
+  }
+  
+  .medical-staff-form table td {
+    padding: 10px;
+  }
+  
+  .medical-staff-form input[type="text"],
+  .medical-staff-form input[type="email"],
+  .medical-staff-form input[type="password"],
+  .medical-staff-form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  .medical-staff-form button[type="submit"],
+  .medical-staff-form button[type="reset"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .medical-staff-form button[type="reset"] {
+    background-color: #dc3545;
+    margin-left: 10px;
+  }
+  

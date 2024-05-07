@@ -6,12 +6,18 @@ const session = require('express-session');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
-const userRoutes = require('./routes/userRoutes');
+const staffRoutes = require('./routes/staffRoutes');
 const patientRoutes = require('./routes/patientRoutes');
 const searchRoutes = require('./routes/searchRoutes');
 const isAuthenticated = require('./middleware/authMiddleware'); // Import the isAuthenticated middleware
+const scheduleNotifications = require('./notificationScheduler');
+
+
 
 const app = express();
+
+// Start scheduled notifications
+scheduleNotifications();
 
 // Middleware
 app.use(cors());
@@ -45,8 +51,8 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 
 // Routes
 app.use('/api/search', searchRoutes);
-app.use('/api/patients', patientRoutes);
-app.use('/api/users',  userRoutes); // Apply isAuthenticated middleware to protect this route
+app.use('/api/patients',  patientRoutes); // Apply isAuthenticated middleware to protect this route
+app.use('/api/medicalstaff',  staffRoutes); // Apply isAuthenticated middleware to protect this route
 app.use('/api', authRoutes);
 
 // Default route

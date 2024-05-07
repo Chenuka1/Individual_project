@@ -1,4 +1,3 @@
-// route/login.js
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
@@ -16,7 +15,7 @@ const generateToken = (patient) => {
 };
 
 router.post('/login', async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, fcmToken } = req.body; // Include fcmToken in request body
 
   try {
     // Find the patient by username
@@ -27,27 +26,18 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ success: false, message: 'Invalid username or password' });
     }
 
+    // Update patient's FCM token
+    patient.fcmToken = fcmToken;
+    await patient.save();
+
     // Generate token and send it back
     const token = generateToken(patient);
     res.status(200).json({ success: true, token });
-    console.log(token);
-  //   await AsyncStorage.setItem('token', token);
-  //  const storedToken = await AsyncStorage.getItem('token');
-  //   console.log('Token set in AsyncStorage:', storedToken);
-
+    
   } catch (error) {
     console.error('Error during login:', error);
     res.status(500).json({ success: false, message: 'Internal server error' });
   }
-});
-
-router.get('/login', async (req, res) => {
-
-  console.log("request received sucessfully");
-
-  res.status(200).json({ success: true, message:"sucess" });
-
-  
 });
 
 module.exports = router;

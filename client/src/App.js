@@ -10,9 +10,18 @@ import Footer from './components/footer';
 import Logout from './pages/logout';
 import Details from './pages/patientDetails';
 import Vaccine from './pages/vaccineDetails';
-import Entervaccine from './pages/enterVaccine';
+import AdminDashboard from './Admin/admindashboard';
 import Services from './pages/services';
 import Staff from './pages/staff';
+
+
+
+//Function to check authentication
+function checkauth(){
+
+  const token=localStorage.getItem('token');
+}
+
 
 function App() {
   return (
@@ -43,9 +52,11 @@ function Structure() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/details" element={<Details />} />
         <Route path="/vaccine" element={<Vaccine/>}/>
-        <Route path="/entervaccine" element={<Entervaccine/>}/>
+        <Route path="" element={<AdminDashboard/>}/>
         <Route path="/services" element={<Services/>}/>
         <Route path="/staff" element={<Staff/>}/>
+        <Route path="/admin" element={<AdminDashboard/>}/>
+        
       </Routes>
       <br></br>
       <br></br>

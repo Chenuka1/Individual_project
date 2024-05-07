@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Button } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Notification = ({ token }) => {
+const Notification = ({ navigation }) => {
     const [notifications, setNotifications] = useState([]);
 
     useEffect(() => {
@@ -11,6 +12,9 @@ const Notification = ({ token }) => {
 
     const fetchNotifications = async () => {
         try {
+            // Get JWT token from AsyncStorage
+            const token = await AsyncStorage.getItem('token');
+
             // Fetch notifications from backend with JWT token in headers
             const response = await fetch('http://10.0.2.2:5000/api/notifications', {
                 headers: {
@@ -26,6 +30,18 @@ const Notification = ({ token }) => {
         }
     };
 
+    const handleLogout = async () => {
+        try {
+            // Clear JWT token from AsyncStorage
+            await AsyncStorage.removeItem('token');
+
+            // Navigate to the login screen
+            navigation.navigate('Login');
+        } catch (error) {
+            console.error('Error logging out:', error);
+        }
+    };
+
     return (
         <View style={styles.container}>
             <Text style={styles.heading}>Vaccine Notifications</Text>
@@ -38,6 +54,8 @@ const Notification = ({ token }) => {
                     </View>
                 ))}
             </ScrollView>
+
+            <Button title="Logout" onPress={handleLogout} />
         </View>
     );
 }

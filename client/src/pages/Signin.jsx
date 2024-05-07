@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import '../styles/signin.css'
 
 export default function Signin() {
@@ -28,16 +27,10 @@ export default function Signin() {
             });
 
             if (response.ok) {
-                
-                const { user } = await response.json();
-                // Assuming you're receiving user data from the server upon successful login
-                if (user) {
-                    // Optionally, you can store user data in localStorage
-                    localStorage.setItem('user', JSON.stringify(user)); 
-                    navigate("/home");
-                } else {
-                    throw new Error('No user data received');
-                }
+                const { token } = await response.json();
+                // Store the token in localStorage
+                localStorage.setItem('token', token); 
+                navigate("/home");
             } else {
                 const errorMessage = await response.text();
                 throw new Error(errorMessage || 'Failed to sign in');
@@ -81,4 +74,4 @@ export default function Signin() {
             </form>
         </div>
     );
-};
+}

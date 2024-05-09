@@ -105,6 +105,7 @@ function AddPatients() {
         setFormData({
           birthCertificateId: "",
           fullName: "",
+          email:"",
           birthdate: "",
           gender: "",
           parentsName: "",
@@ -223,6 +224,15 @@ function AddPatients() {
           placeholder="Enter password"
           name="password"
           value={formData.password}
+          onChange={handleChange}
+        />
+        <br />
+        <label htmlFor="email">Enter the password</label>
+        <input
+          type="email"
+          placeholder="Enter email"
+          name="email"
+          value={formData.email}
           onChange={handleChange}
         />
         <br />

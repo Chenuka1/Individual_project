@@ -160,8 +160,8 @@ export default function PatientDetails() {
                     <td><input type="text" value={vaccine.Dose} onChange={(e) => handleVaccineChange(index, 'Dose', e.target.value)} /></td>
                     <td>
                         <select value={vaccine.status} onChange={(e) => handleVaccineChange(index, 'status', e.target.value)}>
-                        
-                             <option value="pending">pending</option>
+                            {vaccine.status}                       
+                            <option value="pending">pending</option>
                             <option value="Completed">Completed</option>
                             
                         </select>

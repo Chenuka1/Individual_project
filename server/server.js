@@ -11,13 +11,13 @@ const patientRoutes = require('./routes/patientRoutes');
 const searchRoutes = require('./routes/searchRoutes');
 const isAuthenticated = require('./middleware/authMiddleware'); // Import the isAuthenticated middleware
 const scheduleNotifications = require('./notificationScheduler');
+const vaccineRoute = require('./routes/vaccineRoutes');
 
 
 
 const app = express();
 
-// Start scheduled notifications
-scheduleNotifications();
+// Start scheduled notification
 
 // Middleware
 app.use(cors());
@@ -49,11 +49,15 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
     process.exit(1);
   });
 
+  
+  
+
 // Routes
 app.use('/api/search', searchRoutes);
 app.use('/api/patients',  patientRoutes); // Apply isAuthenticated middleware to protect this route
 app.use('/api/medicalstaff',  staffRoutes); // Apply isAuthenticated middleware to protect this route
 app.use('/api', authRoutes);
+app.use('/api/', vaccineRoute);//vaccinestatusroute
 
 // Default route
 app.get('/', (req, res) => {

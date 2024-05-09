@@ -10,36 +10,41 @@ const LoginPage = ({ navigation }) => {
 
   const handleLogin = async () => {
     try {
-      // Retrieve FCM token
-      const fcmToken = await messaging().getToken();
-
+      // Prepare the login credentials object
+      const credentials = {
+        username: username,
+        password: password
+      };
+  
       // Make a POST request to the login endpoint on the server
       const response = await fetch('http://10.0.2.2:5000/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password, fcmToken }), // Send FCM token along with username and password
+        body: JSON.stringify(credentials) // Send the credentials in the request body
       });
-
+  
       // Check if the response is successful
       if (!response.ok) {
+        // If response is not ok, throw an error with the error message from the server
         const errorData = await response.json();
         throw new Error(errorData.message || 'Login failed');
       }
-
+  
       // Extract the token from the response
       const { token } = await response.json();
-
+  
       // Store the token securely
       await AsyncStorage.setItem('token', token);
-
+  
       // Navigate to the Home screen
       navigation.navigate('Home');
     } catch (error) {
+      // Handle errors that might occur during fetch operation
       setError(error.message);
     }
-  };
+  }
 
   return (
     <View style={styles.container}>

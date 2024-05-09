@@ -13,6 +13,10 @@ import Vaccine from './pages/vaccineDetails';
 import AdminDashboard from './Admin/admindashboard';
 import Services from './pages/services';
 import Staff from './pages/staff';
+import PatientList from './pages/patientlist';
+import UpdateUpcomingVaccines from './components/updatevaccine';
+
+
 
 
 
@@ -51,11 +55,15 @@ function Structure() {
         <Route path="/addetails/:birthId" element={<Addetails />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/details" element={<Details />} />
-        <Route path="/vaccine" element={<Vaccine/>}/>
+        
         <Route path="" element={<AdminDashboard/>}/>
         <Route path="/services" element={<Services/>}/>
         <Route path="/staff" element={<Staff/>}/>
-        <Route path="/admin" element={<AdminDashboard/>}/>
+        <Route path="/vaccine/:birthId" element={<UpdateUpcomingVaccines/>}/>
+        
+        
+        <Route path="/addstaff" element={<AdminDashboard/>}/>
+        
         
       </Routes>
       <br></br>

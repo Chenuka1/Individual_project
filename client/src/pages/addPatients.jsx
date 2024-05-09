@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import '../styles/addPatients.css'
 
 
-function Addpatients() {
+function AddPatients() {
   const [formData, setFormData] = useState({
     birthCertificateId: "",
     fullName: "",
@@ -12,7 +12,8 @@ function Addpatients() {
     parentsName: "",
     contactNumber: "",
     registeredHospital: "",
-   
+    username: "",
+    password: "",
   });
 
   const [formErrors, setFormErrors] = useState({});
@@ -35,16 +36,16 @@ function Addpatients() {
       errors.birthCertificateId = "Birth certificate ID is required";
     }
 
+    // Validate fullName
     if (!formData.fullName.trim()) {
-      errors.firstName = "Fullname is required";
+      errors.fullName = "Fullname is required";
     }
-
-    
 
     // Validate birthdate
     if (!formData.birthdate) {
       errors.birthdate = "Birthdate is required";
     }
+
     // Validate gender
     if (!formData.gender) {
       errors.gender = "Gender is required";
@@ -55,19 +56,24 @@ function Addpatients() {
       errors.parentsName = "Parents or guardians name is required";
     }
 
-    if (!formData.contactNumber || formData.contactNumber.length < 10) {
-      errors.contactNumber =
-        "Contact number should have at least 10 digits";
-    }
-
     // Validate contactNumber
-    if (!formData.contactNumber) {
-      errors.contactNumber = "Contact number is required";
+    if (!formData.contactNumber || formData.contactNumber.length < 10) {
+      errors.contactNumber = "Contact number should have at least 10 digits";
     }
 
     // Validate registeredHospital
     if (!formData.registeredHospital) {
       errors.registeredHospital = "Registered hospital is required";
+    }
+
+    // Validate username
+    if (!formData.username.trim()) {
+      errors.username = "Username is required";
+    }
+
+    // Validate password
+    if (!formData.password.trim()) {
+      errors.password = "Password is required";
     }
 
     // Update the state with the errors
@@ -98,21 +104,20 @@ function Addpatients() {
         setFormData({
           birthCertificateId: "",
           fullName: "",
-          usename:"",
           birthdate: "",
           gender: "",
           parentsName: "",
           contactNumber: "",
           registeredHospital: "",
+          username: "",
           password: "",
-
         });
       } else {
         console.error("Failed to create user");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert(error);
+      alert("Error submitting form: " + error.message);
     }
   };
 
@@ -138,25 +143,6 @@ function Addpatients() {
           value={formData.fullName}
           onChange={handleChange}
         />
-        <br />
-        <label htmlFor="fullName">Enter the username</label>
-        <input
-          type="text"
-          placeholder="Enter username"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-        />
-        <br />
-        <label htmlFor="fullName">Enter the password</label>
-        <input
-          type="password"
-          placeholder="Enter password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-        <br />
         <br />
         <label htmlFor="birthdate">Enter the birthdate</label>
         <input
@@ -210,7 +196,6 @@ function Addpatients() {
           value={formData.contactNumber}
           onChange={handleChange}
         />
-        
         <br />
         <label htmlFor="registeredHospital">Select registered hospital</label>
         <select
@@ -221,6 +206,24 @@ function Addpatients() {
           <option>Banadaragama hospital</option>
           <option>Asiri hospital</option>
         </select>
+        <br />
+        <label htmlFor="username">Enter the username</label>
+        <input
+          type="text"
+          placeholder="Enter username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+        />
+        <br />
+        <label htmlFor="password">Enter the password</label>
+        <input
+          type="password"
+          placeholder="Enter password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+        />
         <br />
 
         <input type="submit" value="Submit" />
@@ -240,4 +243,4 @@ function Addpatients() {
   );
 }
 
-export default Addpatients;
+export default AddPatients;

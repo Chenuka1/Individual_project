@@ -1,4 +1,3 @@
-//patientDetails.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/patientDetails.css';
@@ -50,7 +49,7 @@ export default function PatientDetails() {
 
             {patientDetails && (
                 <>
-                    <h1>Patient Details</h1>
+                    <h2>Basic deatils</h2>
                     <table>
                         <tbody>
                             <tr>
@@ -77,7 +76,13 @@ export default function PatientDetails() {
                                 <td>Contact Number:</td>
                                 <td>{patientDetails.contactNumber}</td>
                             </tr>
-                            <tr>
+                            
+                        </tbody>
+                    </table>
+
+                    <h2>Past medical history</h2>
+                    <table>
+                    <tr>
                                 <td>Blood group:</td>
                                 <td>{patientDetails.blood}</td>
                             </tr>
@@ -101,36 +106,36 @@ export default function PatientDetails() {
                                 <td>Past Surgery:</td>
                                 <td>{patientDetails.surgery}</td>
                             </tr>
-                        </tbody>
-                    </table>
-                    <h1>Immunization Records</h1>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>Completed Vaccine:</td>
-                                <td>{patientDetails.vaccinename}</td>
-                            </tr>
-                            <tr>
-                                <td>Date of Administration:</td>
-                                <td>{formatDate(patientDetails.vaccinedate)}</td>
-                            </tr>
-                            
-                            <tr>
-                                <td>Upcoming Vaccine Name:</td>
-                                <td>{patientDetails.upcomingVaccine}</td>
-                            </tr>
-                            <tr>
-                                <td>Upcoming Vaccine Date:</td>
-                                <td>{formatDate(patientDetails.upcomingvaccinedate)}</td>
-                            </tr>
-                            <tr>
-                                <td>Upcoming vaccine status</td>
-                                <td>{patientDetails.upcomingvaccinestatus}</td>
-                            </tr>
-                        </tbody>
                     </table>
 
-                    <Link to={`/addetails/${patientDetails.birthCertificateId}`}><u>Enter medical information for the patient</u></Link>
+                    <h2>Vaccination Schedule</h2>
+                    {patientDetails.upcomingVaccine && patientDetails.upcomingVaccine.length > 0 ? (
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td><b>Vaccine Name</b></td>
+                                    <td><b>Upcoming Vaccination Date</b></td>
+                                    <td><b>Dose</b></td>
+                                    <td><b>status</b></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {patientDetails.upcomingVaccine.map((vaccine, index) => (
+                                    <tr key={index}>
+                                        <td>{vaccine.vaccine}</td>
+                                        <td>{formatDate(vaccine.upcomingVaccinationDate)}</td>
+                                        <td>{vaccine.Dose}</td>
+                                        <td>{vaccine.status}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    ) : (
+                        <p>No upcoming vaccinations</p>
+                    )}
+
+                    <Link style={{ color: 'blue' }} to={`/addetails/${patientDetails.birthCertificateId}`}><u>Enter medical information for the patient</u></Link><br></br>
+                    <Link to={`/vaccine/${patientDetails.birthCertificateId}`}>Update vaccine details</Link>
                 </>
             )}
             <div className='emptyspace'></div>

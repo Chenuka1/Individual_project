@@ -11,7 +11,7 @@ const scheduleNotifications=require('./notificationScheduler')
 const app = express();
 
 
-scheduleNotifications();
+
 
 // Middleware
 app.use(express.json()); // Replace bodyParser with express.json()

@@ -43,6 +43,10 @@ const HomePage = () => {
       <TouchableOpacity style={styles.button} onPress={goToNotificationPage}>
         <FontAwesome name="bell" size={20} color="white" />
       </TouchableOpacity>
+      <TouchableOpacity>
+        <Text>Medical details</Text>
+      
+      </TouchableOpacity>
 
 
       </View>

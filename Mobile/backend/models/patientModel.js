@@ -19,7 +19,7 @@ const patientSchema = new mongoose.Schema({
   vaccinename: {type:String},
   vaccinedate:{type:Date},
   age:{type:String},
-  upcomingVaccine:{type:String},
+  upcomingVaccine: [String],
   upcomingvaccinedate:{type:Date}
 
 

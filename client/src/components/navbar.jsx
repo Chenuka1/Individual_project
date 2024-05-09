@@ -28,9 +28,11 @@ const Navbar = () => {
         <ul>
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/addpatients">Add Patients</Link></li>
-          <li><Link to="/details">patient details</Link></li> 
-          <li><Link to="/admin">admin dashboard</Link></li>  
-          <li><Link to="/services">Services</Link></li>        
+          <li><Link to="/details">patient details</Link></li>
+          <li><Link to="/vaccination">vaccine schedule</Link></li>   
+          
+          
+             
           
         </ul>
         <div className="profile-dropdown">

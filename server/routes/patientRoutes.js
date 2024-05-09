@@ -106,7 +106,21 @@ router.post('/create', async (req, res) => {
   }
 });
 
+// Route to update patient details including vaccination schedule
+router.put('/update-patient/:id', async (req, res) => {
+  try {
+      const patientId = req.params.id;
+      const updatedData = req.body;
+      
+      // Update patient details in the database
+      const updatedPatient = await Patient.findByIdAndUpdate(patientId, updatedData, { new: true });
 
+      res.json(updatedPatient);
+  } catch (error) {
+      console.error('Error updating patient details:', error);
+      res.status(500).json({ error: 'Failed to update patient details' });
+  }
+});
 
 
 
@@ -147,6 +161,33 @@ router.get('/:birthCertificateId/medical-history', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch medical history' });
   }
 });
+
+// Route to update vaccination schedule for a patient
+// Route to update vaccination schedule for a patient
+router.put('/patients/:id/upcomingVaccine', async (req, res) => {
+  const birthCertificateId = req.params.id;
+
+  try {
+      // Find the patient by birth certificate ID
+      const patient = await Patient.findOne({ birthCertificateId });
+
+      if (!patient) {
+          return res.status(404).json({ error: 'Patient not found' });
+      }
+
+      // Update the upcoming vaccine array
+      patient.upcomingVaccine = req.body.upcomingVaccine;
+
+      // Save the updated patient
+      await patient.save();
+
+      res.json(patient); // Return the updated patient details
+  } catch (error) {
+      console.error('Error updating vaccination schedule:', error);
+      res.status(500).json({ error: 'Failed to update vaccination schedule' });
+  }
+});
+
 
 
 

@@ -35,6 +35,38 @@ export default function PatientDetails() {
             return 'Invalid Date';
         }
     };
+    const handleUpdate = async (e) => {
+        e.preventDefault();
+        if (!patientDetails) return; // Ensure patientDetails is not null
+        const patientId = patientDetails.birthCertificateId; // Extract patient ID from patientDetails
+    
+        try {
+            const response = await fetch(`http://localhost:4000/api/patients/patients/${patientId}/upcomingVaccine`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ upcomingVaccine: patientDetails.upcomingVaccine })
+                
+            });
+            if (!response.ok) {
+                throw new Error('Failed to update vaccination schedule');
+            }
+            const updatedData = await response.json();
+            setPatientDetails(updatedData);
+            setError(null); // Reset error state
+        } catch (error) {
+            console.error('Error updating vaccination schedule:', error);
+            setError('Failed to update vaccination schedule'); // Set error state
+        }
+        alert("update sucessfully");
+    };
+    
+    const handleVaccineChange = (index, field, value) => {
+        const updatedVaccines = [...patientDetails.upcomingVaccine];
+        updatedVaccines[index][field] = value;
+        setPatientDetails({ ...patientDetails, upcomingVaccine: updatedVaccines });
+    };
 
     return (
         <div className="details">
@@ -108,34 +140,46 @@ export default function PatientDetails() {
                             </tr>
                     </table>
 
+                    
                     <h2>Vaccination Schedule</h2>
                     {patientDetails.upcomingVaccine && patientDetails.upcomingVaccine.length > 0 ? (
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td><b>Vaccine Name</b></td>
-                                    <td><b>Upcoming Vaccination Date</b></td>
-                                    <td><b>Dose</b></td>
-                                    <td><b>status</b></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {patientDetails.upcomingVaccine.map((vaccine, index) => (
-                                    <tr key={index}>
-                                        <td>{vaccine.vaccine}</td>
-                                        <td>{formatDate(vaccine.upcomingVaccinationDate)}</td>
-                                        <td>{vaccine.Dose}</td>
-                                        <td>{vaccine.status}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    ) : (
-                        <p>No upcoming vaccinations</p>
-                    )}
+    <table>
+        <thead>
+            <tr>
+                <td><b>Vaccine Name</b></td>
+                <td><b>Upcoming Vaccination Date</b></td>
+                <td><b>Dose</b></td>
+                <td><b>Status</b></td>
+            </tr>
+        </thead>
+        <tbody>
+            {patientDetails.upcomingVaccine.map((vaccine, index) => (
+                <tr key={index}>
+                    <td><input type="text" value={vaccine.vaccine} onChange={(e) => handleVaccineChange(index, 'vaccine', e.target.value)} /></td>
+                    <td><input type="date" value={formatDate(vaccine.upcomingVaccinationDate)} onChange={(e) => handleVaccineChange(index, 'upcomingVaccinationDate', e.target.value)} /></td>
+                    <td><input type="text" value={vaccine.Dose} onChange={(e) => handleVaccineChange(index, 'Dose', e.target.value)} /></td>
+                    <td>
+                        <select value={vaccine.status} onChange={(e) => handleVaccineChange(index, 'status', e.target.value)}>
+                        
+                             <option value="pending">pending</option>
+                            <option value="Completed">Completed</option>
+                            
+                        </select>
+                    </td>
+                </tr>
+            ))}
+        </tbody>
+    </table>
+) : (
+    <p>No upcoming vaccinations</p>
+)}
+                    <button onClick={handleUpdate}>Update Vaccination Schedule</button>
+                    <br></br>
+
 
                     <Link style={{ color: 'blue' }} to={`/addetails/${patientDetails.birthCertificateId}`}><u>Enter medical information for the patient</u></Link><br></br>
-                    <Link to={`/vaccine/${patientDetails.birthCertificateId}`}>Update vaccine details</Link>
+                    
+                    
                 </>
             )}
             <div className='emptyspace'></div>

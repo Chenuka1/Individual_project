@@ -55,13 +55,10 @@ function Structure() {
         <Route path="/addetails/:birthId" element={<Addetails />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/details" element={<Details />} />
-        
         <Route path="" element={<AdminDashboard/>}/>
         <Route path="/services" element={<Services/>}/>
         <Route path="/staff" element={<Staff/>}/>
         <Route path="/vaccine/:birthId" element={<UpdateUpcomingVaccines/>}/>
-        
-        
         <Route path="/addstaff" element={<AdminDashboard/>}/>
         
         

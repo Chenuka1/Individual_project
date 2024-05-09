@@ -3,21 +3,19 @@ import { useParams } from 'react-router-dom';
 
 const UpdateVaccineForm = () => {
   const { birthId } = useParams(); // Assuming birthId is part of the URL params
-  const [vaccineDetails, setVaccineDetails] = useState([
-
-    
-  ]);
+  const [upcomingVaccines, setUpcomingVaccines] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchVaccineDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/api/vaccine/${birthId}/upcoming-vaccines`);
+        console.log(birthId);
+        const response = await fetch(`http://localhost:4000/api/${birthId}/vaccine`);
         if (!response.ok) {
           throw new Error('Failed to fetch vaccine details');
         }
         const data = await response.json();
-        setVaccineDetails(data.upcomingVaccine || []); // Ensure vaccineDetails is not undefined
+        setUpcomingVaccines(data || []); // Corrected state update
         setError(null); // Clear any previous error
       } catch (error) {
         console.error('Error fetching vaccine details:', error);
@@ -29,9 +27,9 @@ const UpdateVaccineForm = () => {
   }, [birthId]);
 
   const handleChange = (index, field, value) => {
-    const updatedVaccineDetails = [...vaccineDetails];
+    const updatedVaccineDetails = [...upcomingVaccines]; // Corrected variable name
     updatedVaccineDetails[index][field] = value;
-    setVaccineDetails(updatedVaccineDetails);
+    setUpcomingVaccines(updatedVaccineDetails); // Corrected state update
   };
 
   const handleUpdate = async () => {
@@ -41,7 +39,7 @@ const UpdateVaccineForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ upcomingVaccines: vaccineDetails }),
+        body: JSON.stringify({ upcomingVaccines }), // Corrected variable name
       });
       if (!response.ok) {
         throw new Error('Failed to update vaccine details');
@@ -68,7 +66,7 @@ const UpdateVaccineForm = () => {
           </tr>
         </thead>
         <tbody>
-          {vaccineDetails.map((vaccine, index) => (
+          {upcomingVaccines.map((vaccine, index) => (
             <tr key={index}>
               <td>
                 <input

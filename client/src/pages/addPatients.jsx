@@ -14,6 +14,7 @@ function AddPatients() {
     registeredHospital: "",
     username: "",
     password: "",
+    email:"",
   });
 
   const [formErrors, setFormErrors] = useState({});

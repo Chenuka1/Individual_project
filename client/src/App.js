@@ -1,5 +1,6 @@
+// App.js
 import React from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Addpatients from './pages/addPatients';
 import HomePage from './pages/homePage'; 
 import Navbar from './components/navbar';
@@ -15,23 +16,14 @@ import Services from './pages/services';
 import Staff from './pages/staff';
 import PatientList from './pages/patientlist';
 import UpdateUpcomingVaccines from './components/updatevaccine';
-
-
-
-
-
-//Function to check authentication
-function checkauth(){
-
-  const token=localStorage.getItem('token');
-}
-
+import MedicalStaff from "./Admin/addmedicalstaff";
+import Adminpatient from "./Admin/adminpatients";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Structure />
-    </BrowserRouter>
+    </Router>
   );
 }
 
@@ -45,7 +37,7 @@ function Structure() {
   return (
     <div className="App">
       {!isSigninPage && <Navbar />}
-      <br></br>
+      
       
       <Routes>
         <Route path="/" element={<Signin />} />
@@ -55,13 +47,13 @@ function Structure() {
         <Route path="/addetails/:birthId" element={<Addetails />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/details" element={<Details />} />
-        <Route path="" element={<AdminDashboard/>}/>
-        <Route path="/services" element={<Services/>}/>
-        <Route path="/staff" element={<Staff/>}/>
-        <Route path="/vaccine/:birthId" element={<UpdateUpcomingVaccines/>}/>
-        <Route path="/addstaff" element={<AdminDashboard/>}/>
-        
-        
+        <Route path="/dashboard" element={<AdminDashboard />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/staff" element={<Staff />} />
+        <Route path="/vaccine/:birthId" element={<UpdateUpcomingVaccines />} />
+        <Route path="/addstaff" element={<MedicalStaff />} />
+        <Route path="/patientlist" element={<Adminpatient />} />
+        <Route/>
       </Routes>
       <br></br>
       <br></br>

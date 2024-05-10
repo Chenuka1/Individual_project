@@ -7,6 +7,7 @@ const admin = require('firebase-admin');
 const serviceAccount = require('./serviceaccount/notification.json');
 const notificationRoute=require('./routes/notificationRoute');
 const scheduleNotifications=require('./notificationScheduler')
+const medicalRoute=require("./routes/medicalRoute")
 
 const app = express();
 
@@ -34,5 +35,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 app.use('/api', loginRoute);
 
 app.use('/api',notificationRoute);
+
+app.use('/api',medicalRoute)
 
 

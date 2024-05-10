@@ -1,12 +1,14 @@
+// LoginPage.js
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import messaging from '@react-native-firebase/messaging'; // Import Firebase messaging
+import { useNavigation } from '@react-navigation/native'; // Import useNavigation hook
 
-const LoginPage = ({ navigation }) => {
+const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigation = useNavigation();
 
   const handleLogin = async () => {
     try {
@@ -15,7 +17,7 @@ const LoginPage = ({ navigation }) => {
         username: username,
         password: password
       };
-  
+
       // Make a POST request to the login endpoint on the server
       const response = await fetch('http://10.0.2.2:5000/api/login', {
         method: 'POST',
@@ -24,22 +26,22 @@ const LoginPage = ({ navigation }) => {
         },
         body: JSON.stringify(credentials) // Send the credentials in the request body
       });
-  
+
       // Check if the response is successful
       if (!response.ok) {
         // If response is not ok, throw an error with the error message from the server
         const errorData = await response.json();
         throw new Error(errorData.message || 'Login failed');
       }
-  
+
       // Extract the token from the response
       const { token } = await response.json();
-  
+
       // Store the token securely
       await AsyncStorage.setItem('token', token);
-  
-      // Navigate to the Home screen
-      navigation.navigate('Home');
+
+      // Navigate to the Home screen with authToken as a route parameter
+      navigation.navigate('Home', { authToken: token });
     } catch (error) {
       // Handle errors that might occur during fetch operation
       setError(error.message);

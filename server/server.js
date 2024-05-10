@@ -13,6 +13,7 @@ const isAuthenticated = require('./middleware/authMiddleware'); // Import the is
 const scheduleNotifications = require('./notificationScheduler');
 const vaccineRoute = require('./routes/vaccineRoutes');
 const scheduleCronjob=require('./cronjob')
+const adminRoutes=require('./routes/adminRoutes')
 
 
 
@@ -63,6 +64,7 @@ app.use('/api/patients',  patientRoutes); // Apply isAuthenticated middleware to
 app.use('/api/medicalstaff',  staffRoutes); // Apply isAuthenticated middleware to protect this route
 app.use('/api', authRoutes);
 app.use('/api/', vaccineRoute);//vaccinestatusroute
+app.use('/api/admin',adminRoutes);
 
 // Default route
 app.get('/', (req, res) => {

@@ -1,6 +1,8 @@
+//addmedicalstaff.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './css/medicalstaff.css';
+import Navbar from "./component/adminnavbar";
 
 export default function MedicalStaff() {
     const navigate = useNavigate();
@@ -86,13 +88,10 @@ export default function MedicalStaff() {
     };
 
     return (
-        <div className="medical-staff-container">
-            <form>
-                <div className='search'>
-                    <input type="text" placeholder="Enter patient identity "  />
-                    <button type="submit">Search</button>
-                </div>
-            </form>
+        <div className="">
+            <Navbar/>
+            
+            <div className="medical-staff-container">
             <h1>Enter Medical Staff</h1>
             <form onSubmit={handleSubmit} className="medical-staff-form">
                 <table>
@@ -210,6 +209,7 @@ export default function MedicalStaff() {
                 <button type="submit">Submit</button>
                 <button type="reset">Reset</button>
             </form>
+            </div>
         </div>
     );
 }

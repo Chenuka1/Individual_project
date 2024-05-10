@@ -3,7 +3,7 @@ const sendEmail = require('./emailService'); // Import the sendEmail function
 const Patient = require('./models/patientModel');
 
 function scheduleCronjob() {
-  cron.schedule('* * * * *', async () => { // Change the schedule expression to run every minute
+  cron.schedule('0 8 * * *', async () => { // Change the schedule expression to run every minute
     try {
       // Get patients with upcoming vaccination dates
       const patients = await Patient.find({});

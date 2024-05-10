@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import Patient from './pages/medicaldetails';
+import Vaccine from './pages/vaccine'
 
 
 
@@ -19,6 +20,7 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginPage}  />
         <Stack.Screen name="Home" component={HomePage} />
         <Stack.Screen name="medical" component={Patient}/>
+        <Stack.Screen name="vaccine" component={Vaccine}/>
        
       </Stack.Navigator>
     </NavigationContainer>

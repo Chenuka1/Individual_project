@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet,Button } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 
 const Patient = () => {
   const [patient, setPatient] = useState(null);
+  
 
   useEffect(() => {
     const fetchPatientDetails = async () => {
@@ -36,11 +38,29 @@ const Patient = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Medical Details</Text>
+      <Text style={styles.header}>personal details </Text>
       <View style={styles.row}>
         <Text style={styles.label}>Full Name:</Text>
         <Text style={styles.value}>{patient.fullName}</Text>
       </View>
+      <View style={styles.row}>
+        <Text style={styles.label}>Birthdate:</Text>
+        <Text style={styles.value}>{patient.birthdate}</Text>
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.label}>Gender:</Text>
+        <Text style={styles.value}>{patient.gender}</Text>
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.label}>Parent/Guardian:</Text>
+        <Text style={styles.value}>{patient.parentsName}</Text>
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.label}>contact:</Text>
+        <Text style={styles.value}>{patient.contactNumber}</Text>
+      </View>
+      <Text style={styles.header}>Medical Details</Text>
+      
       <View style={styles.row}>
         <Text style={styles.label}>Registered Hospital:</Text>
         <Text style={styles.value}>{patient.registeredHospital}</Text>
@@ -61,14 +81,18 @@ const Patient = () => {
         <Text style={styles.label}>Surgery:</Text>
         <Text style={styles.value}>{patient.surgery}</Text>
       </View>
-      <Text style={styles.header}>Vaccination Schedule</Text>
-      {patient.upcomingVaccine.map((vaccine, index) => (
+      {/* <Text style={styles.header}>Vaccination Schedule</Text> */}
+      {/* {patient.upcomingVaccine.map((vaccine, index) => (
         <View key={index} style={styles.vaccineItem}>
           <Text style={styles.vaccineName}>{vaccine.vaccine}</Text>
           <Text style={styles.vaccineDescription}>{vaccine.description}</Text>
-          <Text style={styles.vaccineDate}>{new Date(vaccine.upcomingVaccinationDate).toLocaleDateString()}</Text>
+          <Text style={styles.vaccineDate}>Upcomming vaccine date: {new Date(vaccine.upcomingVaccinationDate).toLocaleDateString()}</Text>
+          <Text style={styles.status}>{vaccine.status}</Text>
+          
         </View>
-      ))}
+      ))} */}
+      <Text>personal details</Text>
+      
     </View>
   );
 };

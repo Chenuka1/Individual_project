@@ -52,7 +52,7 @@ const Adminpatient = () => {
                 <td>{user.position}</td>              
                 <td>{user.email}</td>
                 <td>
-                  <button onClick={() => handleSendEmail(user)}>
+                  <button className="send-button"onClick={() => handleSendEmail(user)}>
                     Send email
                   </button>
                 </td>

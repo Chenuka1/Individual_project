@@ -178,7 +178,7 @@ export default function PatientDetails() {
 ) : (
     <p>No upcoming vaccinations</p>
 )}
-                    <button onClick={handleUpdate}>Update Vaccination Schedule</button>
+                    <button className="btn"onClick={handleUpdate}>Update Vaccination Schedule</button>
                     <br></br>
 
 

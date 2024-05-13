@@ -124,7 +124,9 @@ function AddPatients() {
   };
 
   return (
-    <div className="form">
+    <div>
+      <br></br>
+      <div className="form">
       <h1>Add new patients</h1>
       
       <form onSubmit={handleSubmit}>
@@ -250,6 +252,11 @@ function AddPatients() {
         </div>
       )}
       </form>
+    </div>
+
+
+
+
     </div>
   );
 }

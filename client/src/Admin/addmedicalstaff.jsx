@@ -204,6 +204,7 @@ export default function MedicalStaff() {
                                 </select>
                             </td>
                         </tr>
+                        
                     </tbody>
                 </table>
                 <button type="submit">Submit</button>

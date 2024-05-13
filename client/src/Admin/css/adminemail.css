@@ -1,0 +1,57 @@
+.container1 {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light gray background color */
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.container1 h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.container1 form {
+    display: flex;
+    flex-direction: column;
+}
+
+.container1 label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.container1 input[type="email"],
+.container1 input[type="text"],
+.container1 textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+.container1 textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.container1 button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 150px; /* Fixed width */
+    align-self: flex-end; /* Align to the end of the container */
+}
+
+.container1 button:hover {
+    background-color: #0056b3;
+}

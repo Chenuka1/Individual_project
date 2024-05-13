@@ -16,17 +16,17 @@
   color: #fff;
 }
 
-
 .nav-menu {
   list-style: none;
   margin: 0;
-  padding: 0;
-  display: flex;
+  padding: 0 40px; /* Increased padding-right */
+  display: flex; /* Change to flex */
 }
 
 .nav-item {
-  margin-right: 20px;
+  margin-right: 45px;
 }
+
 
 .nav-link {
   text-decoration: none;

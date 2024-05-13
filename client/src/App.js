@@ -18,6 +18,9 @@ import PatientList from './pages/patientlist';
 import UpdateUpcomingVaccines from './components/updatevaccine';
 import MedicalStaff from "./Admin/addmedicalstaff";
 import Adminpatient from "./Admin/adminpatients";
+import Email from './Admin/adminemail'
+import Milestone from './pages/growingmilestones';
+
 
 function App() {
   return (
@@ -47,12 +50,16 @@ function Structure() {
         <Route path="/addetails/:birthId" element={<Addetails />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/details" element={<Details />} />
-        <Route path="/dashboard" element={<AdminDashboard />} />
+        <Route path="/dashboard/*" element={<AdminDashboard />} />
         <Route path="/services" element={<Services />} />
         <Route path="/staff" element={<Staff />} />
         <Route path="/vaccine/:birthId" element={<UpdateUpcomingVaccines />} />
+        <Route path="/milestone" element={<Milestone/>}/>
         <Route path="/addstaff" element={<MedicalStaff />} />
-        <Route path="/patientlist" element={<Adminpatient />} />
+        <Route path="/users" element={<Adminpatient />} />
+        
+        <Route path="/email" element={<Email/>}/>
+        
         <Route/>
       </Routes>
       <br></br>

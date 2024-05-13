@@ -1,56 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import './css/patientlist.css'; // Import the CSS file
 import Navbar from './component/adminnavbar';
+import { useNavigate } from 'react-router-dom';
 
 const Adminpatient = () => {
-  const [patients, setPatients] = useState([]);
+  const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchPatients = async () => {
+    const fetchUsers = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/admin/patients');
+        const response = await fetch('http://localhost:4000/api/admin/users');
         if (!response.ok) {
-          throw new Error('Failed to fetch patients');
+          throw new Error('Failed to fetch users');
         }
         const data = await response.json();
-        setPatients(data);
+        setUsers(data);
       } catch (error) {
-        console.error('Error fetching patients:', error);
+        console.error('Error fetching users:', error);
       }
     };
 
-    fetchPatients();
+    fetchUsers();
   }, []);
+
+  const handleSendEmail = (user) => {
+    // Redirect to email form page with user's email as state
+    navigate(`/email`, { state: { recipient: user.email } });
+  };
 
   return (
     <div>
-        <Navbar/>
-        <div className="patient-list-container">
-        
-      <h2>Patient List</h2>
-      <table className="patient-table"> {/* Apply table class */}
-        <thead>
-          <tr>
-            <th>Birthcertificate id</th>
-            <th>Full Name</th>
-            <th>Username</th>
-            <th>Email</th>
-            
-          </tr>
-        </thead>
-        <tbody>
-          {patients.map(patient => (
-            <tr key={patient._id}>
-               <td>{patient.birthCertificateId}</td> 
-              <td>{patient.fullName}</td>
-              <td>{patient.username}</td>
-              <td>{patient.email}</td>
+      <Navbar />
+      <div className="patient-list-container">
+        <h2>User List</h2>
+        <table className="patient-table">
+          <thead>
+            <tr>
               
+              <th>Full Name</th>
+              <th>Position</th>
+              <th>Email</th>
+              <th>Send email</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr key={user.identity}>
+                
+                <td>{user.fullName}</td>
+                <td>{user.position}</td>              
+                <td>{user.email}</td>
+                <td>
+                  <button onClick={() => handleSendEmail(user)}>
+                    Send email
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

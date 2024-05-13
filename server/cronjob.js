@@ -2,12 +2,28 @@ const cron = require('node-cron');
 const sendEmail = require('./emailService'); // Import the sendEmail function
 const Patient = require('./models/patientModel');
 
+const formatDate = (dateString) => {
+  if (!dateString) return ''; // Return empty string if date is null or undefined
+  try {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', { 
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+  } catch (error) {
+      console.error('Error formatting date:', error);
+      return 'Invalid Date';
+  }
+};
+
 function scheduleCronjob() {
-  cron.schedule('0 8 * * *', async () => { // Change the schedule expression to run every minute
+  cron.schedule('* 8 * * *', async () => { // Change the schedule expression to run every minute
     try {
       // Get patients with upcoming vaccination dates
       const patients = await Patient.find({});
-  
+      
       patients.forEach(patient => {
         patient.upcomingVaccine.forEach(vaccine => {
           // Calculate the date seven days before the upcomingVaccinationDate
@@ -19,7 +35,8 @@ function scheduleCronjob() {
           if (new Date() >= sevenDaysBefore && vaccine.status === 'pending') {
             // Customize email content for each patient
             const subject = 'Upcoming Vaccination Reminder';
-            const text = `Dear ${patient.fullName},\n\nThis is a reminder that your upcoming vaccination for ${vaccine.vaccine} is scheduled on ${vaccine.upcomingVaccinationDate}.\n\nPlease make sure to attend the appointment.\n\nBest regards,\nYour Healthcare Team`;
+            const formattedDate = formatDate(vaccine.upcomingVaccinationDate);
+            const text = `Dear ${patient.fullName},\n\nThis is a reminder that your upcoming vaccination for ${vaccine.vaccine} is scheduled on ${formattedDate}.\n\nPlease make sure to attend the appointment.\n\nBest regards,\nYour Healthcare Team`;
             
             // Send email
             sendEmail(patient.email, subject, text);

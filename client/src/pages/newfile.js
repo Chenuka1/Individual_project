@@ -67,12 +67,39 @@ export default function PatientDetails() {
         updatedVaccines[index][field] = value;
         setPatientDetails({ ...patientDetails, upcomingVaccine: updatedVaccines });
     };
+    const handleInputChange = (field, value) => {
+        setPatientDetails({ ...patientDetails, [field]: value });
+    };
+    const handleSubmit1 = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`http://localhost:4000/api/patients/${patientDetails.birthCertificateId}/medical-history`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(patientDetails),
+            });
+            if (!response.ok) {
+                throw new Error('Failed to update medical history');
+            }
+            console.log('Patient details updated  successfully');
+            alert('patient details updated sucessfully');
+
+            // Optionally, redirect the user to another page or show a success message
+        } catch (error) {
+            console.error('Error updating medical history:', error);
+            // Handle error - show error message or retry logic
+        }
+    };
+
+    
 
     return (
         <div className="details">
             <form onSubmit={handleSearch}>
                 <div className='search'>
-                    <input type="text" placeholder="Enter Birth Certificate ID to search for the patient" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+                    <input type="text" className="input-field" placeholder="Enter Birth Certificate ID to search for the patient" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                     <button type="submit">Search</button>
                 </div>
             </form>
@@ -81,69 +108,76 @@ export default function PatientDetails() {
 
             {patientDetails && (
                 <>
-                    <h2>Basic deatils</h2>
+                    <h2>Basic Details</h2>
                     <table>
                         <tbody>
                             <tr>
                                 <td>Birth Certificate ID:</td>
-                                <td>{patientDetails.birthCertificateId}</td>
+                                <td><input type="text"className="input-field" value={patientDetails.birthCertificateId} onChange={(e) =>  handleInputChange('birthCertificateId', e.target.value)} /></td>
                             </tr>
                             <tr>
                                 <td>Full Name:</td>
-                                <td>{patientDetails.fullName}</td>
+                                <td>
+                                <textarea
+                              style={{ width: '100%',border: 'none'}}
+                              value={patientDetails.fullName}
+                              onChange={(e) => handleInputChange('fullName', e.target.value)}
+                                />
+                                </td>
+                            
+                    
                             </tr>
                             <tr>
                                 <td>Birthdate:</td>
-                                <td>{formatDate(patientDetails.birthdate)}</td>
+                                <td><input type="date" value={formatDate(patientDetails.birthdate)} onChange={(e) => handleInputChange('birthdate', e.target.value)} /></td>
                             </tr>
                             <tr>
                                 <td>Gender:</td>
-                                <td>{patientDetails.gender}</td>
+                                <td><input type="text" className="input-field"value={patientDetails.gender} onChange={(e) => handleInputChange('gender', e.target.value)} /></td>
                             </tr>
                             <tr>
                                 <td>Parents Name:</td>
-                                <td>{patientDetails.parentsName}</td>
+                                <td><input type="textarea"className="input-field" value={patientDetails.parentsName} onChange={(e) => handleInputChange('parentsName', e.target.value)} /></td>
                             </tr>
                             <tr>
                                 <td>Contact Number:</td>
-                                <td>{patientDetails.contactNumber}</td>
+                                <td><input type="text" value={patientDetails.contactNumber} onChange={(e) => handleInputChange('contactNumber', e.target.value)} /></td>
                             </tr>
-                            
                         </tbody>
                     </table>
 
                     <h2>Past medical history</h2>
                     <table>
+                        <tbody>
                             <tr>
-                                <td>Weight</td>
-                                <td>{patientDetails.weight}kg</td>
-                            </tr>
-                            <tr>
-                                <td>Blood group:</td>
-                                <td>{patientDetails.blood}</td>
+                                <td>Blood Group:</td>
+                                <td><input type="text" value={patientDetails.blood} onChange={(e) => handleInputChange('blood', e.target.value)} /></td>
                             </tr>
                             <tr>
                                 <td>Registered Hospital:</td>
-                                <td>{patientDetails.registeredHospital}</td>
+                                <td><input type="text" value={patientDetails.registeredHospital} onChange={(e) => handleInputChange('registeredHospital', e.target.value)} /></td>
                             </tr>
                             <tr>
                                 <td>Past Diseases:</td>
-                                <td>{patientDetails.pastDiseases}</td>
+                                <td><input type="text" value={patientDetails.pastDiseases} onChange={(e) => handleInputChange('pastDiseases', e.target.value)} /></td>
                             </tr>
                             <tr>
                                 <td>Allergies:</td>
-                                <td>{patientDetails.allergies}</td>
+                                <td><input type="text" value={patientDetails.allergies} onChange={(e) => handleInputChange('allergies', e.target.value)} /></td>
                             </tr>
                             <tr>
                                 <td>Medications:</td>
-                                <td>{patientDetails.medications}</td>
+                                <td><input type="text" value={patientDetails.medications} onChange={(e) => handleInputChange('medications', e.target.value)} /></td>
                             </tr>
                             <tr>
                                 <td>Past Surgery:</td>
-                                <td>{patientDetails.surgery}</td>
+                                <td><input type="text" value={patientDetails.surgery} onChange={(e) => handleInputChange('surgery', e.target.value)} /></td>
                             </tr>
+                        </tbody>
                     </table>
-                    <Link style={{ color: 'blue' }} to={`/addetails/${patientDetails.birthCertificateId}`}><u>Enter medical information for the patient</u></Link><br></br>
+                    <button onClick={handleSubmit1}>Update Details</button>
+
+                    {/* <Link style={{ color: 'blue' }} to={`/addetails/${patientDetails.birthCertificateId}`}><u>Enter medical information for the patient</u></Link> */}
 
                     
                     <h2>Vaccination Schedule</h2>
@@ -176,7 +210,7 @@ export default function PatientDetails() {
         </tbody>
     </table>
 ) : (
-    <p>No upcoming vaccinations</p>
+    <p>No medical details</p>
 )}
                     <button onClick={handleUpdate}>Update Vaccination Schedule</button>
                     <br></br>

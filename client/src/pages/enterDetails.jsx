@@ -13,12 +13,7 @@ export default function Addetails() {
         medications: '',
         blood:'',
         surgery: '',
-        vaccinename: '',
-        vaccinedate: '',
-        ageinMonths: '',
-        upcomingVaccine: '',
-        upcomingvaccinedate: '',
-        upcomingvaccinestatus: 'pending'
+        
     });
 
     const fetchMedicalHistory = async () => {
@@ -39,6 +34,18 @@ export default function Addetails() {
         // Fetch existing medical history of the patient using their birth certificate ID
         fetchMedicalHistory();
     }, [birthId]);
+
+
+    const formatDate = (dateString) => {
+        if (!dateString) return ''; // Return empty string if date is null or undefined
+        try {
+            const date = new Date(dateString);
+            return date.toISOString().split('T')[0];
+        } catch (error) {
+            console.error('Error formatting date:', error);
+            return 'Invalid Date';
+        }
+    };
 
     
 
@@ -75,9 +82,9 @@ export default function Addetails() {
             if (!response.ok) {
                 throw new Error('Failed to update medical history');
             }
-            console.log('Medical history updated successfully');
+            console.log('patient details updated successfully');
             alert('Medical history updated successfully');
-            navigate('/details');
+           
 
             // Optionally, redirect the user to another page or show a success message
         } catch (error) {
@@ -86,36 +93,15 @@ export default function Addetails() {
         }
     };
 
-    const handleSubmit1 = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await fetch(`http://localhost:4000/api/patients/${birthId}/medical-history`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(medicalHistory),
-            });
-            if (!response.ok) {
-                throw new Error('Failed to update medical history');
-            }
-            console.log('Vaccine history updated successfully');
-            alert('Vaccine history updated successfully');
-
-            // Optionally, redirect the user to another page or show a success message
-        } catch (error) {
-            console.error('Error updating medical history:', error);
-            // Handle error - show error message or retry logic
-        }
-    };
+    
 
     return (
-        <div className="container1">
+        <div className="addpatient">
             <div className="medical-history-container">
                 <div className="medical-history">
                     <h1>Update Medical History</h1>
                     <form onSubmit={handleSubmit} className="shadow-box">
-                        <label htmlFor="pastDiseases">Past Diseases:</label>
+                        <label htmlFor="pastDisease">Past Diseases:</label>
                         <input type="text" name="pastDiseases" value={medicalHistory.pastDiseases} onChange={handleChange} />
                         <label htmlFor="allergies">Allergies:</label>
                         <input type="text" name="allergies" value={medicalHistory.allergies} onChange={handleChange} />
@@ -127,6 +113,8 @@ export default function Addetails() {
                         <input type="text" name="medications" value={medicalHistory.medications} onChange={handleChange} />
                         <label htmlFor="surgery">Surgery information:</label>
                         <input type="text" name="surgery" value={medicalHistory.surgery} onChange={handleChange} />
+                        <label htmlFor="weight">weight:</label>
+                        <input type="float" name="weight" value={medicalHistory.weight} onChange={handleChange} /><br></br>
 
                         <button type="submit">Submit</button>
                     </form>
@@ -134,28 +122,32 @@ export default function Addetails() {
             </div>
             <div className="vaccine-history-container">
                 <div className="vaccine-history">
-                    <h1>Update vaccine history</h1>
-                    <form onSubmit={handleSubmit1} className="shadow-box1">
+                    <h1>Update personal details history</h1>
+                    <form onSubmit={handleSubmit} className="shadow-box1">
                         <label htmlFor="birthdate">Birthdate:</label>
-                        <input type="date" name="birthdate" onChange={handleChange} value={medicalHistory.birthdate} />
+                        <input type="date" name="birthdate" onChange={handleChange} value={formatDate(medicalHistory.birthdate)} />
 
-                        <label>Vaccine name</label>
-                        <input type="text" name="vaccinename" onChange={handleChange} value={medicalHistory.vaccinename} />
+                        <label htmlFor="birthdate">Birthdate:</label>
+                        <input type="text" name="fullName" onChange={handleChange} value={medicalHistory.fullName} />
 
-                        <label>Date of vaccination</label>
-                        <input type="date" name="vaccinedate" onChange={handleChange} value={medicalHistory.vaccinedate} />
-
-                        <label>Upcoming vaccine name</label>
-                        <input type="text" name="upcomingVaccine" onChange={handleChange} value={medicalHistory.upcomingVaccine} />
-
-                        <label>Next vaccination date</label>
-                        <input type="date" name="upcomingvaccinedate" onChange={handleChange} value={medicalHistory.upcomingvaccinedate} />
-
-                        <label htmlFor="upcomingvaccinestatus">Upcoming Vaccine Status:</label>
-                        <select name="upcomingvaccinestatus" value={medicalHistory.upcomingvaccinestatus} onChange={handleChange}>
-                            <option value="pending">Pending</option>
-                            <option value="completed">Completed</option>
+                        <label htmlFor="gender">Gender:</label>
+                        <select  onChange={handleChange}>
+                            
+                            <option value="male">male</option>
+                            <option value="female">female</option>
                         </select>
+
+                        <label htmlFor="Parent">Parent/Guardiant</label>
+                        <input type="text" name="parentsName" onChange={handleChange} value={medicalHistory.parentsName} />
+
+                        <label htmlFor="Contact">Contact number</label>
+                        <input type="text" name="contactNumber" onChange={handleChange} value={medicalHistory.contactNumber} />
+
+                        <label htmlFor="Contact">Patient address</label>
+                        <input type="text" name="address" onChange={handleChange} value={medicalHistory.address} />
+
+
+                        
                         
 
                         <button type="submit">Submit</button>

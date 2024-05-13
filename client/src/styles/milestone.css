@@ -1,0 +1,45 @@
+/* milestone.css */
+
+/* Style for the entire milestone tracker */
+.milestone-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  /* Style for headings */
+  .milestone-heading {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for each milestone category */
+  .milestone-category {
+    margin-bottom: 20px;
+  }
+  
+  /* Style for milestone list */
+  .milestone-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* Style for milestone item */
+  .milestone-item {
+    margin-bottom: 10px;
+  }
+  
+  /* Style for checkbox label */
+  .checkbox-label {
+    margin-left: 10px;
+  }
+  
+  /* Style for achieved milestone checkbox */
+  .achieved-checkbox {
+    color: green;
+  }
+  
+  /* Style for not yet achieved milestone checkbox */
+  .not-achieved-checkbox {
+    color: red;
+  }
+  

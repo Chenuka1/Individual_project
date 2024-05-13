@@ -1,4 +1,4 @@
-.container1 {
+.addpatient {
   display: flex;
   justify-content: space-between; /* Align forms to start and end of container */
   margin: 20px auto; /* Adjust margin as needed */

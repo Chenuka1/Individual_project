@@ -91,7 +91,7 @@ const Patient = () => {
           
         </View>
       ))} */}
-      <Text>personal details</Text>
+      
       
     </View>
   );
@@ -100,7 +100,8 @@ const Patient = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
+    height:800,
   },
   row: {
     flexDirection: 'row',

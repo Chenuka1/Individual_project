@@ -81,7 +81,7 @@ export default function PatientDetails() {
 
             {patientDetails && (
                 <>
-                    <h2>Basic deatils</h2>
+                    <h2>Personal details</h2>
                     <table>
                         <tbody>
                             <tr>

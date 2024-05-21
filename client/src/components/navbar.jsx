@@ -28,10 +28,9 @@ const Navbar = () => {
         <ul>
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/addpatients">Add Patients</Link></li>
-          <li><Link to="/details">patient details</Link></li>
-          <li><Link to="/services">services</Link></li>   
-          <li><Link to="/dashboard">Admin dashboard</Link></li>
-          
+          <li><Link to="/details">Patient Details</Link></li>
+          <li><Link to="/services">Services</Link></li>   
+          <li><Link to="/dashboard">Admin Dashboard</Link></li>
         </ul>
         <div className="profile-dropdown">
           <img
@@ -41,6 +40,7 @@ const Navbar = () => {
             onClick={toggleDropdown}
           />
           <i className={`fas fa-caret-${isDropdownOpen ? 'up' : 'down'}`} onClick={toggleDropdown}></i>
+
           {isDropdownOpen && (
             <ul className="dropdown-menu show-dropdown" onMouseLeave={closeDropdown}>
               <li onClick={handleLogout}>Logout</li>

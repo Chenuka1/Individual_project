@@ -19,7 +19,7 @@ const formatDate = (dateString) => {
 };
 
 function scheduleCronjob() {
-  cron.schedule('* 8 * * *', async () => { // Change the schedule expression to run every minute
+  cron.schedule('0 8 * * *', async () => { // Change the schedule expression to run every minute
     try {
       // Get patients with upcoming vaccination dates
       const patients = await Patient.find({});

@@ -1,6 +1,4 @@
-//homepage
 import React, { useState, useEffect } from 'react';
-import UseAuth from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import '../styles/homepage.css';
 import slider1 from '../assets/slider-1.jpg';
@@ -12,8 +10,7 @@ import nurse from '../assets/nurse2.jpg';
 import vaccine from '../assets/vaccine2.jpg';
 
 export default function HomePage() {
-  
- 
+  const navigate = useNavigate();
   const [currentImage, setCurrentImage] = useState(1);
 
   // Define interval duration in milliseconds (e.g., 5 seconds)
@@ -53,29 +50,32 @@ export default function HomePage() {
 
   return (
     <div className="homepage-container">
-      <br></br>
-      <img 
-        src={getImage()} 
-        alt={`Slider ${currentImage}`} 
-        className="slider-image"
-      />
+  <br />
+  <img
+    src={getImage()}
+    alt={`Slider ${currentImage}`}
+    className="slider-image"
+  />
 
-      <div className="welcome">
-        <br></br>
-        <h1>Welcome to Baby care!</h1>
-        
-      </div>
-      <div className='imageinfo'>
-        <div className="image-container">
-          <img src={Doctor} alt="image of a doctor" />
-        </div>
-        <div className="image-container">
-          <img src={nurse} alt="image of nurse" />
-        </div>
-        <div className="image-container">
-          <img src={vaccine} alt="baby gets vaccine" />
-        </div>
-      </div>
+  <div className="welcome">
+    <br />
+    <h1>Welcome to Baby care!</h1>
+  </div>
+  <div className='imageinfo'>
+    <div className="image-container">
+      <img src={Doctor} alt="image of a doctor" />
+      <button className="info-button" onClick={() => navigate('/details')}>Details</button>
     </div>
+    <div className="image-container">
+      <img src={nurse} alt="image of nurse" />
+      <button className="info-button" onClick={() => navigate('/services')}>Services</button>
+    </div>
+    <div className="image-container">
+      <img src={vaccine} alt="baby gets vaccine" />
+      <button className="info-button" onClick={() => navigate('/email')}>send email</button>
+    </div>
+  </div>
+</div>
+
   );
 }

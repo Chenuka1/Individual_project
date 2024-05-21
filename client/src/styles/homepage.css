@@ -1,3 +1,7 @@
+.homepage-container {
+  text-align: center;
+}
+
 .slider-image {
   width: 100%; /* Adjust as needed */
   height: auto; /* This will maintain the aspect ratio */
@@ -5,42 +9,41 @@
   object-fit: cover; /* This will cover the whole space while maintaining aspect ratio */
 }
 
-
-.welcome{
-
-text-align: center;
-
+.welcome {
+  text-align: center;
 }
 
-.imageinfo img{
-  
-  height:400px;
-  width:450px;
-  
-
-
+.imageinfo img {
+  height: 400px;
+  width: 450px;
 }
+
 .imageinfo {
   display: flex;
-  padding-left:30px;
-
+  padding-left: 30px;
 }
-
 .image-container {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-right: 30px; /* Adjust spacing between images */
-  padding-left:20px;
+  padding-left: 20px;
 }
 
 .info-button {
-  position: absolute;
-  bottom: 0;
   width: 100%; /* Make the button width same as the image width */
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 0 0 5px 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* Add margin to separate button from image */
 }
 
-.button-container {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+.info-button:hover {
+  background-color: #0056b3;
 }
 

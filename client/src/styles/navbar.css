@@ -50,9 +50,13 @@
   margin-right: 10px;
 }
 
-.navbar .profile-dropdown i {
-  color: #888;
-  cursor: pointer;
+.navbar .profile-dropdown .fas.fa-caret-up,
+.navbar .profile-dropdown .fas.fa-caret-down {
+  color: black; /* Change color to black */
+}
+
+.navbar .profile-dropdown .fas.fa-caret-down {
+  margin-left: 5px; /* Adjust the spacing between profile image and dropdown icon */
 }
 
 .navbar .dropdown-menu {

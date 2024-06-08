@@ -1,4 +1,4 @@
-Instructions
+Instructions to install the system
 -First you need to install node.js
 -second you need to download the project folder
 -Extract the project folders
@@ -7,7 +7,7 @@ Instructions
 
 
 
-Introduction
+
 The Infant Health Management System is a web and mobile application designed to facilitate the management of child health records. The system allows healthcare providers to efficiently manage medical records, send vaccination alerts, and enables parents/guardians to access their child's medical history.
 
 Features

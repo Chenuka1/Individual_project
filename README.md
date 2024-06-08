@@ -1,9 +1,9 @@
 Instructions to install the system
--First you need to install node.js
--second you need to download the project folder
--Extract the project folders
--Type command "npm install" in both frontend and backend terminal
--start the project by typing "npm start" in both frontend and backend terminal.
+1)First you need to install node.js
+2)second you need to download the project folder
+3)Extract the project folders
+4)Type command "npm install" in both frontend and backend terminal
+5)start the project by typing "npm start" in both frontend and backend terminal.
 
 
 

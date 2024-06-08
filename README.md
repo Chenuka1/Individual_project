@@ -4,6 +4,7 @@ Instructions to install the system
 3)Extract the project folders
 4)Type command "npm install" in both frontend and backend terminal
 5)start the project by typing "npm start" in both frontend and backend terminal.
+6) Enter login credentials- email : (midwife@gmail.com)  and   password : (Midwife$)
 
 
 

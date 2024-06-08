@@ -9,10 +9,11 @@ Instructions to install the system
 
 
 Features
-1) The first feature is managing the patient medical history of infants.
-2) User authentication and authorization.
-3)  Provide timely alerts regarding the vaccination for the baby
-4)  mobile app for the infants parents/guardians
+1) The first feature is managing the patient's medical history of infants.
+2) managing the vaccination schedule of the baby.
+3) User authentication and authorization.
+4)  Provide timely alerts regarding the vaccination for the baby
+5)  mobile app for the infant's parents/guardians
 
 
 License

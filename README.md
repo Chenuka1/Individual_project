@@ -9,7 +9,7 @@ Instructions to install the system
 
 
 Features
-1) The first feature is managing the medical  health records of infants.
+1) The first feature is managing the patient medical history of infants.
 2) User authentication and authorization.
 3)  Provide timely alerts regarding the vaccination for the baby
 4)  mobile app for the infants parents/guardians

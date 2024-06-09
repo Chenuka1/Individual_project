@@ -36,7 +36,7 @@ router.post('/login', async (req, res) => {
 
         // If email and password are correct, respond with the user data and token
         res.json({ user, token });
-        console.log(token);
+        
     } catch (error) {
         // If there's an error, respond with an error message
         console.error('Error signing in:', error);

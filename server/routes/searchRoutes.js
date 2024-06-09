@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const Patient = require('../models/patientModel'); // Import your Patient model or schema
+const CryptoJS= require("crypto")
 
 // Search for a patient by birth certificate ID
 router.get('/', async (req, res) => {

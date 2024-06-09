@@ -37,7 +37,7 @@ export default function Signin() {
             }
         } catch (error) {
             console.error('Error signing in:', error);
-            alert('An error occurred while signing in. Please try again.');
+            alert('username and password is incorrect.');
         }
     };
 

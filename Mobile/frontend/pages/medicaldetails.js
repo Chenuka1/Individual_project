@@ -43,10 +43,7 @@ const Patient = () => {
         <Text style={styles.label}>Full Name:</Text>
         <Text style={styles.value}>{patient.fullName}</Text>
       </View>
-      <View style={styles.row}>
-        <Text style={styles.label}>Birthdate:</Text>
-        <Text style={styles.value}>{patient.birthdate}</Text>
-      </View>
+      
       <View style={styles.row}>
         <Text style={styles.label}>Gender:</Text>
         <Text style={styles.value}>{patient.gender}</Text>

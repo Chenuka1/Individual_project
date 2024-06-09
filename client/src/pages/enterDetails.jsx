@@ -127,7 +127,7 @@ export default function Addetails() {
                         <label htmlFor="birthdate">Birthdate:</label>
                         <input type="date" name="birthdate" onChange={handleChange} value={formatDate(medicalHistory.birthdate)} />
 
-                        <label htmlFor="birthdate">Birthdate:</label>
+                        <label htmlFor="birthdate">username:</label>
                         <input type="text" name="fullName" onChange={handleChange} value={medicalHistory.fullName} />
 
                         <label htmlFor="gender">Gender:</label>

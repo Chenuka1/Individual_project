@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/patientDetails.css';
 
+
+
 export default function PatientDetails() {
     const [searchQuery, setSearchQuery] = useState('');
     const [patientDetails, setPatientDetails] = useState(null);
@@ -92,6 +94,12 @@ export default function PatientDetails() {
                                 <td>Full Name:</td>
                                 <td>{patientDetails.fullName}</td>
                             </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>{patientDetails.email}</td>
+                            </tr>
+                            
+
                             <tr>
                                 <td>Birthdate:</td>
                                 <td>{formatDate(patientDetails.birthdate)}</td>

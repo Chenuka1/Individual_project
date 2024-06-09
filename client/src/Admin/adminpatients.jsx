@@ -33,7 +33,7 @@ const Adminpatient = () => {
     <div>
       <Navbar />
       <div className="patient-list-container">
-        <h2>User List</h2>
+        <h2>Health care providers in the system</h2>
         <table className="patient-table">
           <thead>
             <tr>

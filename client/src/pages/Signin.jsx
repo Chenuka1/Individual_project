@@ -44,7 +44,7 @@ export default function Signin() {
     return (
         <div className="sign">
             <form className="signinform" onSubmit={handleSubmit}>
-                <h1>Log in</h1>
+                <h1>Medical staff Log in</h1>
                 <div>
                     <label htmlFor="email">Email address</label>
                     <input

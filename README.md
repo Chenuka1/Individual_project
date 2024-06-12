@@ -16,5 +16,4 @@ Features
 5)  mobile app for the infant's parents/guardians
 
 
-License
-This project is licensed under the MIT License.
+
